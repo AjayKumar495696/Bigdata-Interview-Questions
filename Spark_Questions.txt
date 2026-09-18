@@ -1,0 +1,139 @@
+1Q : Explain the Spark job architecture?
+Ans : Spark job architecture is designed to enable distributed and parallel processing of larger data sets on a cluster of machines.
+      The architecture has mainly 4 components.
+      Driver program, Spark Context object, Cluster manager and Worker nodes.
+      1) Driver Program :
+         It coordinates the job's execution and it will create Spark context object.
+      2) Spark Context Object :
+         It manages the distribution of data and the execution of tasks across the cluster.
+      3) Cluster Manager :
+         It will allocate resources to the Spark job. And it is also called as Resource Manager.
+      4) Worker Nodes :
+         These execute the tasks using the executor.
+====================================================================================================================================================================
+2Q : What is the difference between repartition and coalesce?
+Ans : Repartition and Coalesce are two operations in Apache Spark to change the number of partitions of a dataset.
+      Repartition :
+      1. It will increase or decrease the number of partitions of a dataset.
+      2. Repartition is slower as it performs full shuffling the data.
+      3. Repartition is costly.
+      Coalesce :
+      1. It will decrease the number of partitions of a dataset.
+      2. Coalesce is faster as it performs partial shuffling the data or some times no shuffling the data.
+      3. Coalesce is cheaper and more efficient than Repartition when decreasing the number of partitions.
+====================================================================================================================================================================
+3Q : Write a syntax for repartition and coalesce?
+Ans : Repartition :
+      val repartitionedDF = df.repartition(numPartitions)
+      val repartitionedRDD = rdd.repartition(numPartitions)
+      Coalesce :
+      val coalescedDF = df.coalesce(numPartitions)
+      val coalescedRDD = RDD.coalesce(numPartitions)
+====================================================================================================================================================================
+4Q : What are the features of Apache Spark?
+Ans : 1. In-memory computation
+      2. Distributed processing
+      3. Support many cluster managers like YARN and Apache Mesos
+      4. Fault-tolerant
+      5. Immutable
+      6. Lazy evaluation
+      7. Inbuild optimization when using data frames
+      8. Cache & Persistence
+      9. Support ANSI SQL
+====================================================================================================================================================================
+5Q : What is Cache and Persistence in Apache Spark?
+Ans : Caching :
+      It will store the intermediate results in memory so Spark can quickly retrieve them without recomputing the
+      entire lineage when the same data is needed again.
+      Persistence :
+      Where as Persistence, it will store the intermediate results in different storage levels.
+      These are Disk or Memory or combination of both.
+====================================================================================================================================================================
+6Q : What are the different storage levels available in Persistence?
+Ans : Different storage levels in Persistence are :
+      DISK_ONLY
+      MEMORY_ONLY
+      MEMORY_ONLY_SER
+      MEMORY_AND_DISK
+      MEMORY_AND_DISK_SER
+====================================================================================================================================================================
+7Q : What is the difference between Hadoop MapReduce and Apache Spark?
+Ans : Hadoop :
+      1. Hadoop is used to store and process data on external storage.
+      2. Hadoop processes data in batches.
+      3. Hadoop is affordable.
+      4. Hadoop is scalable by adding more nodes.
+      5. Hadoop is integrated with other libraries for machine learning capabilities.
+      6. Hadoop is generally faster than the traditional system.
+      7. Hadoop is having high latency.
+      8. Hadoop doesn't support caching mechanism.
+      Spark :
+      1. Spark is used to store and process data on internal memory.
+      2. Spark processes data in batches and in real time.
+      3. Spark is more expensive.
+      4. Spark is more challenging in terms of scalability.
+      5. Spark is having built-in machine learning libraries.
+      6. Spark is 10 to 100 times faster than Hadoop.
+      7. Spark is having low latency.
+      8. Spark supports caching mechanism.
+====================================================================================================================================================================
+8Q : What is the difference between RDD, DataFrame and Dataset?
+Ans : RDD :
+      1. RDD released version is 1.0
+      2. RDD is the distributed collection of elements.
+      3. It supports structured and un-structured data.
+      4. Compile time type-safety is available here.
+      5. It doesn't have built-in optimization engine.
+      6. It supports Java, Scala, Python and R programming languages.
+      DataFrame :
+      1. DataFrame released version is 1.3
+      2. DataFrame is distributed collection of data organised into columns.
+      3. It supports structured and semi-structured data.
+      4. No compile time type-safety is here.
+      5. Query optimization is happened through the catalyst optimizer.
+      6. It supports Java, Scala, Python and R programming languages.
+      Dataset :
+      1. Dataset released version is 1.6
+      2. Dataset is the combination of both RDD and DataFrame.
+      3. It supports structured and un-structured data.
+      4. Compile time type-safety is available here.
+      5. Query optimization is happened through the catalyst optimizer.
+      6. It supports Java and Scala languages only.
+====================================================================================================================================================================
+9Q : What are the different file formats that Spark can support?
+Ans : Spark supports CSV, Avro, Parquet, ORC, Text, Json and XML file formats.
+====================================================================================================================================================================
+10Q : What are the different languages that Spark can support?
+Ans : Java, Scala, Python and R.
+====================================================================================================================================================================
+11Q : What are the different cluster managers that Spark can support?
+Ans : Apache Mesos, Stand-alone cluster and YARN.
+====================================================================================================================================================================
+12Q : What are the different libraries / core components that Spark have?
+Ans : Spark Core, Spark SQL, Spark MLlib, Spark Streaming and GraphX.
+====================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
