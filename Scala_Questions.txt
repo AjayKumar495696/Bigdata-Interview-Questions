@@ -1,3 +1,28 @@
+Scala Interview Questions :
+************************
+Opening Scala shell in command prompt :
+spark-shell --master local[*]
+----------------------------------------------------------------------------------------------------------------------------------------------------
+1Q  : What is Scala?
+Ans :  -> Scala stands for Scalable language.
+       -> It is a general-purpose, high level, pure object oriented programming language.
+       -> It provides the support to the functional programming approach.
+       -> Scala programs can convert byte codes and can run on the JVM (Java Virtual Machine).
+       -> It is highly influenced by Java.
+====================================================================================================================================================================
+9Q : Difference between Val and Var keywords in Scala?
+Ans : Val and Var are used to define variables.
+      Val :
+      Val is a immutable variable. Once a variable is assigned to Val, it can't be reassigned.
+      val x = 20
+      x = 10 //It won't get compiled
+
+      Var :
+      Var is mutable variable. We can reassign a value to it, once we created.
+      var x = 30
+      x = 20
+      println(x)  //20
+====================================================================================================================================================================
 1Q : What is a higher order function in Scala?
 Ans : Higher order function is a function either it takes one or more functions as an argument or returns a function as its result.
 ====================================================================================================================================================================
@@ -58,12 +83,111 @@ Ans : List :
              }
            O/P : 6 2 3 4
 ====================================================================================================================================================================
-
-
-
-
-
-
+10Q : Difference between class, object and method?
+Ans : Class is a blueprint for creating objects. It defines the structure and behaviour of objects.
+      Object represent single instances of a class.
+      Method define the actions that can be performed within classes or objects.
+====================================================================================================================================================================
+11Q : What is the package to use break in scala?
+Ans : import scala.util.control.Breaks._
+      import scala.util.control.Breaks.breakable()
+      import scala.util.control.Breaks.break()
+      Both breakable() and breaks() are available in Breaks._
+====================================================================================================================================================================
+15Q : i) Print 1 to 20 tables using Scala
+      ii) On top of above code, using the break method print 1 to 10 tables only
+      ii) From above, print each table till 5 multiplications only
+          eg: 1*1=1 to 1*5=5
+      iii) From above, create a function Tables and create a method in it and then try to achieve the same above result
+           by calling that function.
+====================================================================================================================================================================
+16Q : What are the different types of inheritance available in Scala? Explain me? Write a code for each inheritance with example?
+Ans : Single inheritance, Multilevel inheritance, Hirarchial inheritance, Multiple inheritance and Hybrid inheritance.
+      a) Single inheritance :
+         A ---> B
+      b) Multilevel inheritance :
+         A ---> B ---> C
+      c) Hirarchial inheritance :
+              ----> B
+              |
+         A ---|---> C
+              |
+              ----> D
+      d) Multiple inheritance
+             A       B
+             |       |
+             |       |
+             ---------
+                 |
+                 C
+      e) Hybrid inheritance
+                  A
+                 / \
+                /   \
+               B     C
+               \     /
+                \   /
+                  D
+====================================================================================================================================================================
+4Q: What is pattern matching in Scala? Explain me with an example?
+Ans : Pattern matching is a mechanism for checking a value against a pattern.
+      Example Code : 
+      Refer PatternMatchingProg.scala in scala_codes_ak
+====================================================================================================================================================================
+16Q : What are literals in Scala?
+Ans : Any constant value which is assigned to a variable is called literal or constant.
+      Ex: String literals, Integer literals, Character literals, Boolean literals, Multi-Line string literals etc.
+====================================================================================================================================================================
+9Q : What are closures?
+Ans : -> A closure is a function that captures the environment in which it was created.
+      -> It has access to variables and functions in the scope where it was defined, even
+         if those variables and functions are not in the scope where the closure is executed.	
+====================================================================================================================================================================
+8Q: Difference between Nil, Null, Nothing and None?
+====================================================================================================================================================================
+11Q : Difference between singleton and companion objects in scala?
+====================================================================================================================================================================
+12Q : What is tail recursion in Scala? Explain me with an example?
+====================================================================================================================================================================
+13Q : Difference between a function and higher order function? Explain me with an example?
+====================================================================================================================================================================
+10Q : What are traits in Scala?
+Ans : Trait is similar to interface in Java, but with more capabilities. Traits are used to define a set of fields
+      and methods that can be mixed into classes. They provide a way to share interfaces and fields between classes
+      without using inheritance.
+      
+Ans : -> Trait is a concept which can extend the functionality of a class using a set of methods.
+      -> A trait can define abstract methods and fields, just like an interface, but it can also define concrete methods
+	 and fields, as well as implement methods.
+====================================================================================================================================================================
+17Q : What is class and object in Scala?
+Ans : Classes and Objects are basic concepts of Object Oriented Programming.
+      Class :
+      Class is a user-defined blueprint or prototype from which objects are created.
+      A class combines the fields and methods into a single unit.
+      Object :
+      It is a basic unit of Object oriented programming and represents the real-life entities. An object consists of
+      State, Behavior and Identity.
+====================================================================================================================================================================
+20Q : Why Scala is Popular among other programming languages?
+Ans : 1) Easy to Start :
+            -> Scala is high level language so it is closer to other popular programming languages like Java, C, C++.
+            -> Thus it becomes very easy to learn Scala for anyone.
+            -> For Java Programmers, Scala is more easy to learn.
+      2) Contains best features :
+            -> Scala contains the features of different languages like C, C++, Java etc.
+            -> Which makes it more useful, scalable and productive.
+      3) Close integration with Java :
+            -> The source code of the Scala is designed in such a way that its compiler can interpret the Java classes.
+            -> Also, its compiler can utilize the frameworks, Java Libraries, and tools etc.
+            -> After compilation, Scala programs can run on JVM.
+      4) Web - Based & Desktop Application Development :
+            -> For the web applications it provides the support by compiling to JavaScript.
+            -> Similarly for desktop applications, it can be compiled to JVM bytecode.
+      5) Used by Big Companies :
+            -> Most of the popular companies like Apple, Twitter, Walmart, Google etc. move their most of codes to Scala from some other languages.
+            -> Reason being it is highly scalable and can be used in backend operations.
+====================================================================================================================================================================
 
 
 

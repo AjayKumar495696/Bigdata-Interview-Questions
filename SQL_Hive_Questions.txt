@@ -1,0 +1,96 @@
+1Q : What is the difference between Internal tables and External tables?
+Ans : Internal tables :
+      1. We do not mention the location while we are creating an internal table.
+      2. Internal table is fully managed by Hive which means hive manages the meta data, schema and actual data of the table.
+      3. When we drop an internal table the meta data and the actual data of the table will be deleted.
+      4. The performance of the internal table is not impacted by the external storage systems.
+
+      External tables :
+      1. We will mention the location while we are creating an external table.
+      2. External table is not fully managed by hive which means hive manages the meta data and schema of the table.
+      3. When we drop an external table the meta data of the table will be deleted. The actual data will be stored in HDFS or in the external location where we mentioned.
+      4. The performance of the external table is impacted by the external storage systems.
+====================================================================================================================================================================
+2Q : What is the difference among truncate, delete and drop commands?
+Ans : Truncate :
+      It will delete all the rows from the table.
+
+      Delete :
+      It will delete one or more rows from the table based on the condition.
+
+      Drop :
+      It will delete the entire table from the database.
+====================================================================================================================================================================
+3Q : Write a syntax and give me an example for truncate, delete and drop commands?
+Ans : Truncate :
+      truncate table table_name
+      Ex : truncate table Customers;
+
+      Delete :
+      delete from table_name where condition
+      Ex : delete from Customers where customer_name='John';
+
+      Drop :
+      drop table table_name;
+      Ex : drop table Customers;
+====================================================================================================================================================================
+4Q : What is the difference between update and alter commands in SQL?
+Ans : Update :
+      It is used to add or update the column values of a table.
+
+      Alter :
+      It is used to add a new column or delete an existing column from a table.
+====================================================================================================================================================================
+5Q : Write a syntax and give me an example for both update and alter commands?
+Ans : update :
+      update table_name where condition
+      Ex : update customers set country='India' where customer_id=1;
+
+      Alter :
+      alter table table_name
+      add column_name datatype
+      Ex : alter table customers
+           add Email varchar(255);
+====================================================================================================================================================================
+6Q : Which command is used to delete a row and a column from a table in SQL? Give me an example for both?
+Ans : 1) We use delete command to delete a row from the table.
+         Ex : delete from customers
+              where age = 25;
+      2) We use drop command with alter to delete a column from the table.
+         Ex : alter table customers
+              drop column country;
+====================================================================================================================================================================
+7Q : When we will use default constraint in SQL?
+Ans : When any column values are fixed and no need to update every time, then we use default constraint.
+====================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
