@@ -1,0 +1,91 @@
+1Q : What is a higher order function in Scala?
+Ans : Higher order function is a function either it takes one or more functions as an argument or returns a function as its result.
+====================================================================================================================================================================
+2Q : Give me few examples for higher order functions in Scala?
+Ans : Map, flatMap, filter, reduce
+====================================================================================================================================================================
+3Q : What is the difference between map and flatMap?
+Ans : Map and flatMap are higher order functions in Scala. They used to transforms the collections.
+      Map :
+      Map is used to apply a function to each element of a collection and returns a new collection where each element of the collection is the result of applying function.
+
+      flatMap :
+      flatMap is also used to apply a function to each element of a collection and returns a new collection but here it flatten the result into a single collection.
+====================================================================================================================================================================
+4Q : Write a program for map and flatmap in Scala?
+Ans : Map :
+      Ex : Val myList1 = List(1,2,3,4)
+           val doubledList = myList1.map(x=>x*2)
+           println(doubledList)
+           O/P : List(2,4,6,8)
+
+      flatMap :
+      Ex : val myList2 = List(1,2,3,4)
+           val flatMapList = myList2.flatMap(x=>List(x,x*2))
+           println(flatMapList)
+           O/P : List(1,2,2,4,3,6,4,8)
+====================================================================================================================================================================
+5Q : What is the use of yield keyword in Scala?
+Ans : We use yield keyword to apply a function to each element and returns a new collection with transformed elements.
+====================================================================================================================================================================
+6Q : Write a program for yield keyword in Scala?
+      yield keyword :
+      Ex : val myList = List(1,2,3,4)
+           val doubledList = for(i <- myList) yield i*2
+           println(doubledList)
+           O/P : List(2,4,6,8)
+====================================================================================================================================================================
+7Q : What is the difference between list and array?
+Ans : List and Array are data structures in Scala and used to store the sequence of elements.
+      List :
+      List is an immutable collection. Once we create any list, we can't change the values in it.
+      When we update the list every time, a new list will be created.
+
+      Array :
+      Array is a mutable collection. Once we create any array, we can change the values in it.
+====================================================================================================================================================================
+8Q : Write a program for list and array in Scala?
+Ans : List :
+      Ex : var myList = List(1,2,3,4)
+           myList(0) = 5      
+           println(myList)      // it won't get compiled, it will throw an error
+
+      Array :
+      Ex : var myArray = Array(1,2,3,4)
+           myArray(0) = 6
+           for (i <- myArray) {
+               println(i)
+             }
+           O/P : 6 2 3 4
+====================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
