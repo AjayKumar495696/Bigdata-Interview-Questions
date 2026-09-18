@@ -1,0 +1,82 @@
+1) Creating local and remote repos and syncing them :
+
+ls
+git config --global user.name "Ajay Kumar"
+git config --global user.email "ajaykumar1234@gmail.com"
+mkdir git_demo
+cd git_demo
+git init
+touch demo1.txt
+git add demo1.txt
+git commit -m "creating demo1.txt"
+  // now create git-demo at remote
+git remote add origin "https Link"
+git fetch
+git push origin master
+==================================================================================================================================================================================
+2) Git Bash All Commands with Explanation :
+
+ls  ->  It will print the list of folders and files
+ls -l  ->  It will print the list of folders and files with their permissions read, write and execution wrx
+ls -F  ->
+ls -a  ->  It will print all the hidden folders and files
+pwd   ->  It will print current working directory
+
+cd (or) cd ~  ->  To navigate to home directory
+cd ..  -> To navigate to one level back
+cd -   -> It will first print previous directory and then navigate to previous directory
+cd /   -> To navigate into the root directory
+
+rm -r folder1  =>  It will delete folder1 folder, if it ask permission enter y four times then it will delete the folder
+rm -r -f folder1  =>  It forcefully delete the folder1 folder, Be careful with this -f command
+rm -r -f folder1 folder2 folder3  =>  To delete multiple folders in one shot
+rm -r file1.txt  =>  It will delete file1.txt file, if it ask permission enter y four times then it will delete the file
+rm -r -f file1.txt  =>  It forcefully delete the file1.txt file, Be careful with this -f command
+rm -r -f file1.txt file2.txt file3.txt  =>  To delete multiple files in one shot
+
+vi file1.txt  ->  It will create a file.txt file and enter into editor
+-Then first enter i, it will go into insert mode.
+-Then type the content.
+-Then enter esc, and colon and w and q => (esc:wq)
+cat file1.txt  ->  It will display the content in the file1.txt
+touch file1.txt  ->  It will just create a file1.txt file
+touch file1.txt file2.txt file3.txt  ->  To create multiple files in one shot
+clear  ->  It will clear the screen
+
+git config --global user.name "ajay kumar"		   // Setting the user name, this is one time activity
+git config --global user.email "ajaykumar1234@gmail.com"   // Setting the user email, this is one time activity
+git config --global user.name				   // Checking the user name
+git config --global user.email				   // Checking the user email
+whoami
+
+git init  ->  To create a .git at a particular location in local computer
+git remote add origin "https Link"  ->  To add remote repo to my local
+   git remote set-url origin "https Link"	// If above don't work then use this
+git remote -v
+git fetch
+git pull origin master -> It will pull the files to the local from the remote master
+git pull origin branch1 -> It will pull the files to the local from the branch1 of remote
+git push origin master -> It will push the files to the remote master from local master
+git push origin branch1 -> It will push the files to the remote branch1 from the local branch1
+git status   ->  It will show all the new changes made in local
+git help   -> It will print all the git commands and their usage
+
+git add file.txt  ->  Updating the added file which is file1.txt in the local
+git add -A   ->  For adding multiple files in local
+git commit -m "commit msg"   ->  committing from local with a message for one file
+git commit -a -m "commit msg"   ->  committing from local with a message for all files
+git log   ->  It will show all the commits done by you
+
+git branch branch1   ->  It will just create a new branch with name as branch1
+git checkout branch1  ->  It will swith to branch1 branch
+git checkout master  ->  It will swith to master
+git checkout -b branch2   ->  It will create a new branch branch2 and checkout to that branch
+git checkout commitID(first 8 letters) filename
+
+git branch
+git branch -l  ->  It will print all the local branches
+git branch -r  ->  It will print all the remote branches
+git branch -a  ->  It will print all the local and remote branches
+
+git merge branch1  ->  First be in master, then do this. It will merge the branch1 in to master
+git rebase master  ->  First be in branch1, then do this. It will merge the master in to branch1
