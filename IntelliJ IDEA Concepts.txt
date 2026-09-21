@@ -1,0 +1,39 @@
+1) Creating Spark Maven Project (From existing Maven Project) :
+   File -> New -> Project
+   Name : scala_codes_ak
+   Location : ~\IdeaProjects
+   Language : Java
+   Build system : Maven
+   JDK : 1.8 Oracle OpenJDK version 1.8.0_202
+   next click on "create"
+
+   scala_codes_ak project will be created
+   next go to scala_codes_ak -> src -> main -> java
+   change java name to scala
+   java -> refactor -> rename -> scala -> refactor
+
+   Now if you try to create a scala object, it is not visible on scala
+   So now,click on scala_codes_ak -> Add Framework support -> click on Scala -> Use library : scala-sdk-2.11.0 -> click on "ok"
+   Now you can create scala object
+
+   But you can not import spark libraries here
+   You can't do "import org.apache.spark.sql.sparksession" 
+   So go to pom.xml & after properties add below code there
+   <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+    </dependencies>
+
+    So here we are adding Spark Core, Spark SQL libraries.
+    Entire Project creation is done.
+===================================================================================================================================================================================

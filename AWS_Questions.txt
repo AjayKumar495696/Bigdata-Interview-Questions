@@ -1,0 +1,38 @@
+AWS Interview Questions :
+********************
+1Q : What are the different services that you worked on AWS?
+Ans : I worked on
+      1)Aws Glue : It is used for ETL processes and data cataloging
+      2)Athena : It is used for running SQL queries on data stored in S3
+      3)S3 : It is used for scalable object storage and data lake solutions
+      4)RDS : It is used for managing and scaling relational databases
+
+"I have worked with a variety of AWS services, including Athena, Glue, S3, and RDS, to build and optimize data processing pipelines. Specifically:
+AWS Athena: I used Athena to perform ad-hoc queries on large datasets stored in S3, allowing for quick insights without needing to manage infrastructure.
+            I also integrated it with Glue to catalog data for better query efficiency.
+AWS Glue: I leveraged Glue to create ETL (Extract, Transform, Load) jobs for processing and transforming raw data into structured formats,
+          making it easier to query with Athena and store in databases like RDS.
+Amazon S3: S3 was used as the primary storage solution for both raw and processed data. I implemented best practices for data partitioning
+           and lifecycle policies to optimize storage costs and access times.
+Amazon RDS: I worked with RDS to manage relational databases, ensuring high availability and security for structured data.
+            I also used it to store transformed data that was ready for application use or further analysis.
+These services allowed me to create efficient, scalable, and cost-effective data workflows."
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2Q : Create a bucket in AWS S3. Add a file and folder in it. Explain the procedure to give the file access to public?
+Ans : Go to AWS console. Go to S3. Click on 'Create bucket'. Give unique bucket name with all small letters only.
+      Untick 'Block all public access'. Enable bucket versioning and bucket key. finally click on 'Create bucket'
+      Next go to created bucket and click on Upload and upload files / folder.
+      Go to bucket policy and write below code in it.
+      {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement2",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "S3:GetObject",
+            "Resource": "arn:aws:s3:::akajaykumarbucket1/*"
+        }
+    ]
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

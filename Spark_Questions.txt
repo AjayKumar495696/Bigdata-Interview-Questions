@@ -1,3 +1,11 @@
+Spark Interview Questions :
+*************************
+Spark Version in command prompt :
+spark-shell --version
+spark-sql --version
+spark-submit --version
+  {Spark version 2.3.1, Scala version 2.11.8, Java 1.8.0_202}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1Q : Explain the Spark job architecture?
 Ans : Spark job architecture is designed to enable distributed and parallel processing of larger data sets on a cluster of machines.
       The architecture has mainly 4 components.
@@ -11,26 +19,25 @@ Ans : Spark job architecture is designed to enable distributed and parallel proc
       4) Worker Nodes :
          These execute the tasks using the executor.
 ====================================================================================================================================================================
-2Q : What is the difference between repartition and coalesce?
+2Q : What is the difference between repartition and coalesce? Write a syntax for repartition and coalesce?
 Ans : Repartition and Coalesce are two operations in Apache Spark to change the number of partitions of a dataset.
       Repartition :
       1. It will increase or decrease the number of partitions of a dataset.
       2. Repartition is slower as it performs full shuffling the data.
       3. Repartition is costly.
+      Syntax :
+      val repartitionedDF = df.repartition(numPartitions)
+      val repartitionedRDD = rdd.repartition(numPartitions)
+
       Coalesce :
       1. It will decrease the number of partitions of a dataset.
       2. Coalesce is faster as it performs partial shuffling the data or some times no shuffling the data.
       3. Coalesce is cheaper and more efficient than Repartition when decreasing the number of partitions.
-====================================================================================================================================================================
-3Q : Write a syntax for repartition and coalesce?
-Ans : Repartition :
-      val repartitionedDF = df.repartition(numPartitions)
-      val repartitionedRDD = rdd.repartition(numPartitions)
-      Coalesce :
+      Syntax :
       val coalescedDF = df.coalesce(numPartitions)
       val coalescedRDD = RDD.coalesce(numPartitions)
 ====================================================================================================================================================================
-4Q : What are the features of Apache Spark?
+3Q : What are the features of Apache Spark?
 Ans : 1. In-memory computation
       2. Distributed processing
       3. Support many cluster managers like YARN and Apache Mesos
@@ -38,26 +45,25 @@ Ans : 1. In-memory computation
       5. Immutable
       6. Lazy evaluation
       7. Inbuild optimization when using data frames
-      8. Cache & Persistence
+      8. Support Caching & Persistence
       9. Support ANSI SQL
 ====================================================================================================================================================================
-5Q : What is Cache and Persistence in Apache Spark?
+4Q : What is Cache and Persistence in Apache Spark? What are the different storage levels available in Persistence?
 Ans : Caching :
       It will store the intermediate results in memory so Spark can quickly retrieve them without recomputing the
       entire lineage when the same data is needed again.
+
       Persistence :
       Where as Persistence, it will store the intermediate results in different storage levels.
       These are Disk or Memory or combination of both.
-====================================================================================================================================================================
-6Q : What are the different storage levels available in Persistence?
-Ans : Different storage levels in Persistence are :
+      Different storage levels in Persistence are :
       DISK_ONLY
       MEMORY_ONLY
       MEMORY_ONLY_SER
       MEMORY_AND_DISK
       MEMORY_AND_DISK_SER
 ====================================================================================================================================================================
-7Q : What is the difference between Hadoop MapReduce and Apache Spark?
+5Q : What is the difference between Hadoop MapReduce and Apache Spark?
 Ans : Hadoop :
       1. Hadoop is used to store and process data on external storage.
       2. Hadoop processes data in batches.
@@ -77,7 +83,7 @@ Ans : Hadoop :
       7. Spark is having low latency.
       8. Spark supports caching mechanism.
 ====================================================================================================================================================================
-8Q : What is the difference between RDD, DataFrame and Dataset?
+6Q : What is the difference between RDD, DataFrame and Dataset?
 Ans : RDD :
       1. RDD released version is 1.0
       2. RDD is the distributed collection of elements.
@@ -100,22 +106,210 @@ Ans : RDD :
       5. Query optimization is happened through the catalyst optimizer.
       6. It supports Java and Scala languages only.
 ====================================================================================================================================================================
-9Q : What are the different file formats that Spark can support?
+7Q : What are the different file formats that Spark can support?
 Ans : Spark supports CSV, Avro, Parquet, ORC, Text, Json and XML file formats.
 ====================================================================================================================================================================
-10Q : What are the different languages that Spark can support?
+8Q : What are the different languages that Spark can support?
 Ans : Java, Scala, Python and R.
 ====================================================================================================================================================================
-11Q : What are the different cluster managers that Spark can support?
+9Q : What are the different cluster managers that Spark can support?
 Ans : Apache Mesos, Stand-alone cluster and YARN.
 ====================================================================================================================================================================
-12Q : What are the different libraries / core components that Spark have?
+10Q : What are the different libraries / core components that Spark have?
 Ans : Spark Core, Spark SQL, Spark MLlib, Spark Streaming and GraphX.
+====================================================================================================================================================================
+11Q : What is the difference between transformations and actions? Give some examples?
+Ans : Transformations :
+      -> Transformations are operations that create a new RDD from existing one.
+      -> They are lazy, means they do not immediately execute when they called.
+      -> Instead, they build up a logical execution plan that only gets executed when an action is called.
+      Ex :
+      map, flatMap, filter, union, join, groupByKey, reduceByKey, distinct
+
+      Actions :
+      -> Actions are operations that trigger the execution of the transformations and return a result to the driver
+      program or write data to an external storage system.
+      Ex :
+      collect, count, reduce, first, take
+====================================================================================================================================================================
+12Q : Difference between Narrow and Wide transformations?
+Ans : Narrow transformations :
+      -> Narrow transformations are those where each input partition contributes to exactly one output partition.
+      -> This means that there is no need to shuffle data across the cluster, making these transformations are more efficient.
+      Ex :
+      map, flatMap, filter, union, select
+      Wide transformations :
+      -> Wide transformations involve shuffling data across partitions, where multiple input partitions may contribute to a
+         single output partition.
+      -> This requires a data exchange between nodes in the cluster.
+      Ex :
+      join, groupByKey, reduceByKey, distinct, repartition, sort
+====================================================================================================================================================================
+13Q : What is Shuffling?
+Ans : Shuffling in spark is a process that involves redistributing the data across different partitions and nodes in a cluster.
+      It occurs when the data needs to be reorganized to group related records together, during operations like groupBy, reduceByKey, join or distinct.
+====================================================================================================================================================================
+14Q : Difference between CSV, Parquet and ORC file formats?
+Ans : CSV : CSV is a plain text format where each line represents a record and each field within a record is separated by a
+            delimiter comma. It does not have schema or metadata. The schema needs to be defined by the application.
+      Parquet : It is a columnar storage file format designed for efficient data processing. These are self describing and they 
+                store schema along with the data.
+      ORC : It is another columnar storage format similar to parquet designed for efficient storage and processing of large datasets.
+            ORC files also stores the schema with the data.
+====================================================================================================================================================================
+15Q : Difference between sparkContext and SparkSession?
+Ans : SparkContext : It is used generally in older Spark versions and it is the entry point for RDD-based APIs.
+                     It provide an access to core spark functionalities and when we work directly with RDDs we use sparkContext.
+      SparkSession : We use SparkSession starting from Spark 2.0 and offers a more user friendly APIs. It is actually unified entry
+                     point for dataFrame, dataset and SQL APIs as well as RDDS.
 ====================================================================================================================================================================
 
 
 
 
+
+
+Yet to Prepare :
+7Q : What are the different optimization techniques in Apache Spark?
+Ans : Apache Spark provides a wide range of optimization techniques to improve the performance of data processing of larger datasets.
+      Optimization techniques :
+      1) Caching :
+	  -> Spark provides caching mechanism that allows users to cache rdds in memory.
+	  -> This improves the performance of iterative algorithms that reuse the same data multiple times.
+	  
+      2) Partitioning :
+	  -> Spark allows users to partition RDDs based on a specific key, which can help optimize operations.
+    
+      3) Broadcasting :
+          -> Spark provides broadcasting mechanism which allows users to send read-only variable to all the nodes.
+          -> This can improve the performance of operations that require the use of a lookup table or other reference data.
+
+      4) Repartitioning and Coalescing :
+          -> Repartitioning and Coalescing are techniques that can be used to optimize operations by reducing the number
+             of partitions or redistributing the data across partitions.
+
+      5) Predicate Pushdown :
+          -> Spark provides predicate pushdown technique which allows users to push filters down to the data storage layer.
+          -> This can reduce the amount of data need to be read from disk and improve the performance.
+
+      6) Data Serialization :
+          -> Spark provides a range of serialization formats that can be used to optimize the performance of data processing
+             by reducing the size of data transmitted  between nodes.
+
+      7) Shuffle Optimization :
+          -> Spark provides a range of techniques to optimize shuffles, which are operations that require data to be shuffled across nodes in a cluster.
+	  -> These techniques include pipelining, sorting and combining data.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+15Q : What is a DAG?
+Ans : A DAG in spark is a graph that represents the flow of data and the sequence of operations to be executed. It is a key
+      structure that allows Spark to manage and optimize the execution of jobs in a distributed, fault-tolerant manner.
+----------------------------------------------------------------------------------------------------------------------------------------
+25Q : What are the advantages of using Apache Spark?
+Ans :   -> Spark is a general-purpose, in-memory, fault-tolerant, distributed processing engine that allows you to
+           process data efficiently in a distributed fashion.
+	-> Applications running on Spark are 100x faster than the traditional systems.
+        -> You will get great benefits from using Spark for data ingestion pipelines.
+        -> Using Spark we can process data from Hadoop HDFS, AWS S3, Databricks DBFS, Azure Blob Storage, and many file systems.
+        -> Spark is also used to process real-time data using Streaming and Kafka.
+        -> Using Spark Streaming you can also stream files from the file system and also stream from the socket.
+        -> Spark natively has machine learning and graph libraries.
+        -> Provides connectors to store the data in NoSQL databases like MongoDB.		
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+26Q : What are the immediate checks you will do when your spark job is getting failed?
+Ans : When the spark job is getting failed, first we have to check whether the issue is in the code or configuration or cluster or the data.
+      1. First I will check the Error Message
+           I will go to the Spark UI or Logs (via YARN/Standalone/Mesos, etc.)
+           I will look at the driver logs and executor logs.
+           And Identify the root cause (e.g., OutOfMemoryError, FileNotFoundException, NullPointerException, etc.).
+      2. I will verify the Input Data
+         Is the input file is available and accessible?
+         And I will check if the data format changed unexpectedly. Some times schema mismatch will happen.
+         I will also see if there are any corrupt or empty files?
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+27Q : Explain the Spark job execution flow?
+Ans : 1) Application Submission :
+         When we submit a Spark application using spark-submit, the Driver starts and connects with the Cluster Manager.
+      2) Job and Stage Creation :
+         Each action (e.g collect(), save()) triggers a job.
+         A job is divided into stages, based on shuffle boundaries.
+         Each stage contains tasks.
+      3) Task Scheduling :
+         The driver schedules tasks to executors based on data locality.
+         Tasks run in parallel across the cluster.
+      4) Execution and result :
+         Executors process the tasks and return results to the driver.
+         The driver then assembles the final output of the job.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+Spark Programmes :
+
+1Q : What is the syntax for printing the schema of a data frame in spark?
+Ans : df.printSchema()
+====================================================================================================================================================================
+2Q : What is the syntax for printing the data frame in spark?
+Ans : df.show(false)
+====================================================================================================================================================================
+3Q : Write a syntax for declaring a spark session object using an import statement?
+Ans : import org.apache.spark.sql.SparkSession
+      val spark:SparkSession = SparkSession.builder().master("local[1]")
+                               .appName("Creating SparkSession Object").getOrCreate()
+====================================================================================================================================================================
+4Q : What is the import statement to use toDF() method in Spark?
+Ans : import spark.implicits._
+====================================================================================================================================================================
+5Q : Write a syntax for creating a data frame in Spark? And write a code for it?
+Ans : Syntax : val df = spark.createDataFrame(data).toDF(cols:_*)
+      Ex : Refer CreateDataFrame package in spark_codes_ak
+====================================================================================================================================================================
+6Q: What is a Pivot function in Spark? Give its syntax and write a code for it?
+Ans : Pivot function is used to rotate the data from one DataFrame/Dataset column into multiple columns.
+      Syntax : val pivotDF = df.groupBy("Product").pivot("Country").sum("Amount")
+      Ex : Refer Pivot package in spark_codes_ak
+====================================================================================================================================================================
+7Q : What is rownumber, rank and denserank? Give their syntax and write a code for finding them?
+Ans : rownumber, rank and denserank are the window functions used to assign a value to each row within a window partition.
+      rownumber : It is used to assign a unique number to each row within a window partition starting from 1
+      Syntax : val windowSpec = Window.partitionBy("Branch").orderBy(desc("Mark"))
+               val rowNumberDF = df.withColumn("RowNumber",row_number().over(windowSpec))
+
+      rank : It assigns a rank to each row within a window partition starting from 1 but if there are any ties, rank assign
+             the same rank to all tied rows and the next rank skips the number of tied rows
+      Syntax : Val rankDF = df.withColumn("Rank", rank().over(windowSpec))
+
+      dense_rank : It is similar to rank but doesnot skip any ranks when there are any ties.
+                   if there are any ties dense_rank assigns the same rank to all tied rows but the next rank is consecutive.
+                   (or)
+                   In Spark dense rank is a window function that assigns a rank to each row within a window partition, with no gaps
+                   in the ranking values.
+      Syntax : val denserankDF = df.withColumn("DenseRank", dense_rank().over(windowSpec))
+      Ex : Refer WindowFunctions package in spark_codes_ak
+====================================================================================================================================================================
+8Q : Write the syntax for finding the Min, Max, Sum, Avg marks of students department wise? Write a code for finding them?
+Ans : Syntax :
+      Approach 1 :
+      1) val aggDF = df.groupBy("Branch").agg(
+                        min("Marks").as("Minimum Marks"),
+                        max("Marks").as("Maximum Marks"),
+                        sum("Marks").as("Total Marks"),
+                        avg("Marks").as("Average Marks"))
+         aggDF.show(false)
+
+      Approach 2 :
+      2) val minDF = df.groupBy("Branch").min("Marks")
+         minDF.show()
+         val maxDF = df.groupBy("Branch").max("Marks")
+         maxDF.show()
+         val sumDF = df.groupBy("Branch").sum("Marks")
+         sumDF.show()
+         val avgDF = df.groupBy("Branch").avg("Marks")
+         avgDF.show()
+      Ex : Refer MinMaxSumAvg_DepartmentWise package in spark_codes_ak
+====================================================================================================================================================================
 
 
 

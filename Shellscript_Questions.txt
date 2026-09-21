@@ -1,0 +1,32 @@
+Shellscript Commands :
+*******************
+1) ls
+2) pwd
+3) mkdir folder1
+4) cd folder1
+5) touch file1.txt
+6) vi file1.txt
+   i for "insert mode" => write the code => esc => shift+colon => wq => enter
+7) cat file1.txt
+8) rm file1.txt
+9) cd ..
+10) cd
+11) rm -r folder1
+12) cp folder1/file1.sh folder2
+13) mv folder1/file1.sh folder2
+14) mv file1.txt file2.txt      (It will rename the file)
+15) 
+
+================================================================================================
+1) vi firstBashCode.sh
+   code :
+   #!/bin/bash
+   echo "Hi. This is my first bash code"
+ 
+   cat firstBashCode.sh      (It will display the entire code)
+   #!/bin/bash
+   echo "Hi. This is my first bash code"
+
+   sh firstBashCode.sh       (It will print the output of the code)
+   Hi. This is my first bash code
+------------------------------------------------------------------------------------------------

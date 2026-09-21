@@ -1,3 +1,5 @@
+GIT Commands :
+***************
 1) Creating local and remote repos and syncing them :
 
 ls
@@ -80,3 +82,6 @@ git branch -a  ->  It will print all the local and remote branches
 
 git merge branch1  ->  First be in master, then do this. It will merge the branch1 in to master
 git rebase master  ->  First be in branch1, then do this. It will merge the master in to branch1
+
+
+

@@ -10,104 +10,95 @@ Ans :  -> Scala stands for Scalable language.
        -> Scala programs can convert byte codes and can run on the JVM (Java Virtual Machine).
        -> It is highly influenced by Java.
 ====================================================================================================================================================================
-9Q : Difference between Val and Var keywords in Scala?
+2Q : Difference between Val and Var keywords in Scala? Write a syntax and give me an example code for both?
 Ans : Val and Var are used to define variables.
       Val :
       Val is a immutable variable. Once a variable is assigned to Val, it can't be reassigned.
+      Syntax :
       val x = 20
       x = 10 //It won't get compiled
 
       Var :
       Var is mutable variable. We can reassign a value to it, once we created.
+      Syntax :
       var x = 30
       x = 20
       println(x)  //20
+      Ex : Refer Variables package
 ====================================================================================================================================================================
-1Q : What is a higher order function in Scala?
+3Q : What is a higher order function in Scala? Give me few examples for higher order functions in Scala?
 Ans : Higher order function is a function either it takes one or more functions as an argument or returns a function as its result.
+      Ex : Map, flatMap, filter, reduce
 ====================================================================================================================================================================
-2Q : Give me few examples for higher order functions in Scala?
-Ans : Map, flatMap, filter, reduce
-====================================================================================================================================================================
-3Q : What is the difference between map and flatMap?
+4Q : What is the difference between map and flatMap? Write a program for map and flatmap in Scala?
 Ans : Map and flatMap are higher order functions in Scala. They used to transforms the collections.
       Map :
       Map is used to apply a function to each element of a collection and returns a new collection where each element of the collection is the result of applying function.
+      Syntax : Val myList1 = List(1,2,3,4)
+               val doubledList = myList1.map(x=>x*2)
+               println(doubledList)
+               O/P : List(2,4,6,8)
 
       flatMap :
       flatMap is also used to apply a function to each element of a collection and returns a new collection but here it flatten the result into a single collection.
+      Syntax : val myList2 = List(1,2,3,4)
+               val flatMapList = myList2.flatMap(x=>List(x,x*2))
+               println(flatMapList)
+               O/P : List(1,2,2,4,3,6,4,8)
+      Ex : Refer Map_Vs_FlatMap package in spark_codes_ak
 ====================================================================================================================================================================
-4Q : Write a program for map and flatmap in Scala?
-Ans : Map :
-      Ex : Val myList1 = List(1,2,3,4)
-           val doubledList = myList1.map(x=>x*2)
-           println(doubledList)
-           O/P : List(2,4,6,8)
-
-      flatMap :
-      Ex : val myList2 = List(1,2,3,4)
-           val flatMapList = myList2.flatMap(x=>List(x,x*2))
-           println(flatMapList)
-           O/P : List(1,2,2,4,3,6,4,8)
-====================================================================================================================================================================
-5Q : What is the use of yield keyword in Scala?
+5Q : What is the use of yield keyword in Scala? Write a program for yield keyword in Scala?
 Ans : We use yield keyword to apply a function to each element and returns a new collection with transformed elements.
+      Syntax : val myList = List(1,2,3,4)
+               val doubledList = for(i <- myList) yield i*2
+               println(doubledList)
+               O/P : List(2,4,6,8)
+      Ex : Refer Yield package in spark_codes_ak
 ====================================================================================================================================================================
-6Q : Write a program for yield keyword in Scala?
-      yield keyword :
-      Ex : val myList = List(1,2,3,4)
-           val doubledList = for(i <- myList) yield i*2
-           println(doubledList)
-           O/P : List(2,4,6,8)
-====================================================================================================================================================================
-7Q : What is the difference between list and array?
-Ans : List and Array are data structures in Scala and used to store the sequence of elements.
+6Q : What is the difference between list and array? Write a program for list and array in Scala?
+Ans : List and Array are collections in Scala and used to store the sequence of elements.
       List :
       List is an immutable collection. Once we create any list, we can't change the values in it.
       When we update the list every time, a new list will be created.
+      Syntax : var myList = List(1,2,3,4)
+               myList(0) = 5      
+               println(myList)      // it won't get compiled, it will throw an error
 
       Array :
       Array is a mutable collection. Once we create any array, we can change the values in it.
+      Syntax : var myArray = Array(1,2,3,4)
+               myArray(0) = 6
+               for (i <- myArray) {
+                   println(i)
+               }
+               O/P : 6
+                     2
+                     3
+                     4
+      Ex : Refer List_Vs_Array package in spark_codes_ak
 ====================================================================================================================================================================
-8Q : Write a program for list and array in Scala?
-Ans : List :
-      Ex : var myList = List(1,2,3,4)
-           myList(0) = 5      
-           println(myList)      // it won't get compiled, it will throw an error
-
-      Array :
-      Ex : var myArray = Array(1,2,3,4)
-           myArray(0) = 6
-           for (i <- myArray) {
-               println(i)
-             }
-           O/P : 6 2 3 4
-====================================================================================================================================================================
-10Q : Difference between class, object and method?
+7Q : Difference between class, object and method?
 Ans : Class is a blueprint for creating objects. It defines the structure and behaviour of objects.
       Object represent single instances of a class.
       Method define the actions that can be performed within classes or objects.
 ====================================================================================================================================================================
-11Q : What is the package to use break in scala?
-Ans : import scala.util.control.Breaks._
+8Q : What is the package to use both breakable() and break() methods in Scala?
+Ans : To use both breakanble() and break() methods, we need to import the below.
+      import scala.util.control.Breaks._
+                 (or)
       import scala.util.control.Breaks.breakable()
       import scala.util.control.Breaks.break()
-      Both breakable() and breaks() are available in Breaks._
 ====================================================================================================================================================================
-15Q : i) Print 1 to 20 tables using Scala
-      ii) On top of above code, using the break method print 1 to 10 tables only
-      ii) From above, print each table till 5 multiplications only
-          eg: 1*1=1 to 1*5=5
-      iii) From above, create a function Tables and create a method in it and then try to achieve the same above result
-           by calling that function.
-====================================================================================================================================================================
-16Q : What are the different types of inheritance available in Scala? Explain me? Write a code for each inheritance with example?
-Ans : Single inheritance, Multilevel inheritance, Hirarchial inheritance, Multiple inheritance and Hybrid inheritance.
+9Q : What are the different types of inheritance available in Scala? Explain me them? Write a code for each inheritance with example?
+Ans : Types of inheritance that Scala support are :
+      Single inheritance, Multilevel inheritance, Hierarchical inheritance, Multiple inheritance and Hybrid inheritance.
+      Single, Multilevel and Hierarchical inheritance can be achieved by classes in Scala.
+      But Multiple and hybrid inheritances are not achieved by classes. These are achieved by traits.
       a) Single inheritance :
          A ---> B
       b) Multilevel inheritance :
          A ---> B ---> C
-      c) Hirarchial inheritance :
+      c) Hierarchical inheritance :
               ----> B
               |
          A ---|---> C
@@ -128,27 +119,36 @@ Ans : Single inheritance, Multilevel inheritance, Hirarchial inheritance, Multip
                \     /
                 \   /
                   D
+      
+      Ex : Refer OOP_Concepts.Inheritance package in scala_codes_ak 
 ====================================================================================================================================================================
-4Q: What is pattern matching in Scala? Explain me with an example?
+10Q: What is pattern matching in Scala? Explain me with an example?
 Ans : Pattern matching is a mechanism for checking a value against a pattern.
-      Example Code : 
-      Refer PatternMatchingProg.scala in scala_codes_ak
+      Ex : Refer PatternMatching package in scala_codes_ak
 ====================================================================================================================================================================
-16Q : What are literals in Scala?
+11Q : What are literals in Scala? Give me few examples?
 Ans : Any constant value which is assigned to a variable is called literal or constant.
       Ex: String literals, Integer literals, Character literals, Boolean literals, Multi-Line string literals etc.
 ====================================================================================================================================================================
-9Q : What are closures?
+12Q : What are closures?
 Ans : -> A closure is a function that captures the environment in which it was created.
       -> It has access to variables and functions in the scope where it was defined, even
          if those variables and functions are not in the scope where the closure is executed.	
 ====================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+Additional Questions :
+
 8Q: Difference between Nil, Null, Nothing and None?
-====================================================================================================================================================================
 11Q : Difference between singleton and companion objects in scala?
-====================================================================================================================================================================
 12Q : What is tail recursion in Scala? Explain me with an example?
-====================================================================================================================================================================
 13Q : Difference between a function and higher order function? Explain me with an example?
 ====================================================================================================================================================================
 10Q : What are traits in Scala?
@@ -187,6 +187,13 @@ Ans : 1) Easy to Start :
       5) Used by Big Companies :
             -> Most of the popular companies like Apple, Twitter, Walmart, Google etc. move their most of codes to Scala from some other languages.
             -> Reason being it is highly scalable and can be used in backend operations.
+====================================================================================================================================================================
+15Q : i) Print 1 to 20 tables using Scala
+      ii) On top of above code, using the break method print 1 to 10 tables only
+      ii) From above, print each table till 5 multiplications only
+          eg: 1*1=1 to 1*5=5
+      iii) From above, create a function Tables and create a method in it and then try to achieve the same above result
+           by calling that function.
 ====================================================================================================================================================================
 
 
