@@ -3,6 +3,8 @@ Scala Interview Questions :
 Opening Scala shell in command prompt :
 spark-shell --master local[*]
 ----------------------------------------------------------------------------------------------------------------------------------------------------
+Theory Questions :----
+
 1Q  : What is Scala?
 Ans :  -> Scala stands for Scalable language.
        -> It is a general-purpose, high level, pure object oriented programming language.
@@ -10,7 +12,28 @@ Ans :  -> Scala stands for Scalable language.
        -> Scala programs can convert byte codes and can run on the JVM (Java Virtual Machine).
        -> It is highly influenced by Java.
 ====================================================================================================================================================================
-2Q : Difference between Val and Var keywords in Scala? Write a syntax and give me an example code for both?
+2Q : What is the difference between singleton and companion objects in Scala? Write a code for both?
+Ans : Singleton Object :
+      1) Any object declared using object keyword can be a singleton object.
+      2) Does not require a corresponding class.
+      3) Used for utility methods, constants, application entry point, etc.
+      4) Example : object Calculator
+      5) Can exist independently.	
+
+      Companion Object :
+      1) A singleton object having the same name as a class is called its companion object.
+      2) Must have a corresponding class.
+      3) Commonly used for apply(), factory methods, and class-related functionality.	
+      4) Example : class Employee & object Employee	
+      5) Associated with a specific class.
+Refer OOP_Concepts.SingletonAndCompanionObject package in scala_codes_ak
+====================================================================================================================================================================
+3Q : Difference between class, object and method?
+Ans : Class is a blueprint for creating objects. It defines the structure and behaviour of objects.
+      Object represent single instances of a class.
+      Method define the actions that can be performed within classes or objects.
+====================================================================================================================================================================
+4Q : Difference between Val and Var keywords in Scala? Write a syntax and give me an example code for both?
 Ans : Val and Var are used to define variables.
       Val :
       Val is a immutable variable. Once a variable is assigned to Val, it can't be reassigned.
@@ -26,11 +49,11 @@ Ans : Val and Var are used to define variables.
       println(x)  //20
       Ex : Refer Variables package
 ====================================================================================================================================================================
-3Q : What is a higher order function in Scala? Give me few examples for higher order functions in Scala?
+5Q : What is a higher order function in Scala? Give me few examples for higher order functions in Scala?
 Ans : Higher order function is a function either it takes one or more functions as an argument or returns a function as its result.
       Ex : Map, flatMap, filter, reduce
 ====================================================================================================================================================================
-4Q : What is the difference between map and flatMap? Write a program for map and flatmap in Scala?
+6Q : What is the difference between map and flatMap? Write a program for map and flatmap in Scala?
 Ans : Map and flatMap are higher order functions in Scala. They used to transforms the collections.
       Map :
       Map is used to apply a function to each element of a collection and returns a new collection where each element of the collection is the result of applying function.
@@ -47,7 +70,7 @@ Ans : Map and flatMap are higher order functions in Scala. They used to transfor
                O/P : List(1,2,2,4,3,6,4,8)
       Ex : Refer Map_Vs_FlatMap package in spark_codes_ak
 ====================================================================================================================================================================
-5Q : What is the use of yield keyword in Scala? Write a program for yield keyword in Scala?
+7Q : What is the use of yield keyword in Scala? Write a program for yield keyword in Scala?
 Ans : We use yield keyword to apply a function to each element and returns a new collection with transformed elements.
       Syntax : val myList = List(1,2,3,4)
                val doubledList = for(i <- myList) yield i*2
@@ -55,7 +78,7 @@ Ans : We use yield keyword to apply a function to each element and returns a new
                O/P : List(2,4,6,8)
       Ex : Refer Yield package in spark_codes_ak
 ====================================================================================================================================================================
-6Q : What is the difference between list and array? Write a program for list and array in Scala?
+8Q : What is the difference between list and array? Write a program for list and array in Scala?
 Ans : List and Array are collections in Scala and used to store the sequence of elements.
       List :
       List is an immutable collection. Once we create any list, we can't change the values in it.
@@ -76,18 +99,6 @@ Ans : List and Array are collections in Scala and used to store the sequence of 
                      3
                      4
       Ex : Refer List_Vs_Array package in spark_codes_ak
-====================================================================================================================================================================
-7Q : Difference between class, object and method?
-Ans : Class is a blueprint for creating objects. It defines the structure and behaviour of objects.
-      Object represent single instances of a class.
-      Method define the actions that can be performed within classes or objects.
-====================================================================================================================================================================
-8Q : What is the package to use both breakable() and break() methods in Scala?
-Ans : To use both breakanble() and break() methods, we need to import the below.
-      import scala.util.control.Breaks._
-                 (or)
-      import scala.util.control.Breaks.breakable()
-      import scala.util.control.Breaks.break()
 ====================================================================================================================================================================
 9Q : What are the different types of inheritance available in Scala? Explain me them? Write a code for each inheritance with example?
 Ans : Types of inheritance that Scala support are :
@@ -126,50 +137,102 @@ Ans : Types of inheritance that Scala support are :
 Ans : Pattern matching is a mechanism for checking a value against a pattern.
       Ex : Refer PatternMatching package in scala_codes_ak
 ====================================================================================================================================================================
-11Q : What are literals in Scala? Give me few examples?
+11Q : What are literals in Scala? Give me few examples? Write a code for it?
 Ans : Any constant value which is assigned to a variable is called literal or constant.
-      Ex: String literals, Integer literals, Character literals, Boolean literals, Multi-Line string literals etc.
+      Ex: Integer literals, Character literals, Boolean literals, String literals, Multi-Line string literals etc.
+      Code : Refer ControlStatements.Literals package in scala_codes_ak
 ====================================================================================================================================================================
 12Q : What are closures?
 Ans : -> A closure is a function that captures the environment in which it was created.
       -> It has access to variables and functions in the scope where it was defined, even
          if those variables and functions are not in the scope where the closure is executed.	
 ====================================================================================================================================================================
-
-
-
-
-
-
-
-
-
-Additional Questions :
-
-8Q: Difference between Nil, Null, Nothing and None?
-11Q : Difference between singleton and companion objects in scala?
-12Q : What is tail recursion in Scala? Explain me with an example?
-13Q : Difference between a function and higher order function? Explain me with an example?
-====================================================================================================================================================================
-10Q : What are traits in Scala?
-Ans : Trait is similar to interface in Java, but with more capabilities. Traits are used to define a set of fields
-      and methods that can be mixed into classes. They provide a way to share interfaces and fields between classes
-      without using inheritance.
-      
+13Q : What are traits in Scala?      
 Ans : -> Trait is a concept which can extend the functionality of a class using a set of methods.
-      -> A trait can define abstract methods and fields, just like an interface, but it can also define concrete methods
-	 and fields, as well as implement methods.
+      -> A trait can define abstract methods and fields, just like an interface.
+      -> It can also define concrete methods and fields, as well as implement methods.
 ====================================================================================================================================================================
-17Q : What is class and object in Scala?
-Ans : Classes and Objects are basic concepts of Object Oriented Programming.
-      Class :
-      Class is a user-defined blueprint or prototype from which objects are created.
-      A class combines the fields and methods into a single unit.
-      Object :
-      It is a basic unit of Object oriented programming and represents the real-life entities. An object consists of
-      State, Behavior and Identity.
+14: Difference between Nil, Null, Nothing and None?
+Ans : In Scala, Nil, Null, Nothing, and None serve completely different purposes in the type system and collection framework.
+      While they all represent a form of "emptiness" or "absence," they range from concrete values to abstract types.
+      Nil :
+      It is an empty list
+      Ex : List[Nothing]
+      Nil is an actual object that represents a List with zero elements.
+      Under the hood, its type is List[Nothing].
+      Because Scala lists are covariant, Nil can safely stand in as an empty list for any type (e.g., List[String] or List[Int])
+      Ex :
+      val emptyList: List[Int] = Nil
+      val alternative: List[Int] = List() // Equivalent to Nil
+      Use case :
+      To initialize an empty list or act as the base case for list recursion.
+
+      Null and null :
+      It is a trait (Null) and its literal value (null).
+      Ex : Null (subtype of all reference types)
+      Null is a trait at the bottom of the reference type (AnyRef) hierarchy.
+      null is the single concrete instance of that trait.
+      It behaves exactly like null in Java.
+      It is highly discouraged in idiomatic Scala because it causes NullPointerExceptions.
+      It is primarily supported for Java interoperability.
+      Ex :
+      val badPractice: String = null // Avoid doing this in Scala
+      Use case :
+      Interoperability with Java. (Idiomatic Scala avoids this).
+
+      Nothing :
+      It is a bottom type with zero instances.
+      Ex : Nothing (subtype of every type)
+      Nothing is a type, not a value.
+      It sits at the absolute bottom of Scala's entire type hierarchy.
+      There are zero instances of Nothing.It tells the compiler that a piece of code will never terminate normally.
+      For example, if a function always throws an exception or enters an infinite loop, its return type is Nothing.
+      Ex :
+      def crashAndBurn(): Nothing = throw new RuntimeException("System failure")
+      Use case :
+      Return type for methods that always throw exceptions or crash.
+
+      None : 
+      It is an absent optional value.
+      Ex : Option[Nothing]
+      None is an object used to handle missing values safely.
+      It is one of the two children of Scala’s Option[A] type (the other being Some(value)).
+      Instead of returning null when something is missing, a Scala function returns None to force the developer to handle the absence safely.
+      Ex :
+      val userCapitals: Map[String, String] = Map("France" -> "Paris")
+      val capital1: Option[String] = userCapitals.get("France") // Returns Some("Paris")
+      val capital2: Option[String] = userCapitals.get("Japan")  // Returns None Safely
+      Use case :
+      Used with Some to safely represent a value that might be missing.
 ====================================================================================================================================================================
-20Q : Why Scala is Popular among other programming languages?
+15Q : What is the difference between standard recursion and tail recursion in Scala? Explain me with an example code?
+Ans : In Scala, the fundamental difference between standard recursion and tail recursion lies in where the recursive call happens and how the Scala compiler handles memory.
+      Standard (Non-Tail) recursion :
+      In standard recursion, the recursive call is not the final step.
+      The program must return to the current frame to finish a calculation.
+      Ex :
+      Refer Recursion_Vs_TailRecursion Package in scala_codes_ak
+      
+      Tail recursion :
+      In tail recursion, the recursive call is the absolute last operation the function performs.
+      This allows the Scala compiler to optimize the code under the hood by turning it into a fast loop, completely eliminating the risk of a StackOverflowError.
+      Ex :
+      Refer Refer Recursion_Vs_TailRecursion Package in scala_codes_ak
+====================================================================================================================================================================
+16Q : Write a code for factorial of n using both Standard Recursion and Tail Recursion?
+Ans : Refer Recursion_Vs_TailRecursion Package in scala_codes_ak
+====================================================================================================================================================================
+
+
+
+
+
+
+Yet to prepare :
+
+1Q : Difference between a function and higher order function in Scala? Explain me with an example?
+====================================================================================================================================================================
+2Q : Why Scala is Popular among other programming languages?
 Ans : 1) Easy to Start :
             -> Scala is high level language so it is closer to other popular programming languages like Java, C, C++.
             -> Thus it becomes very easy to learn Scala for anyone.
@@ -188,13 +251,28 @@ Ans : 1) Easy to Start :
             -> Most of the popular companies like Apple, Twitter, Walmart, Google etc. move their most of codes to Scala from some other languages.
             -> Reason being it is highly scalable and can be used in backend operations.
 ====================================================================================================================================================================
-15Q : i) Print 1 to 20 tables using Scala
-      ii) On top of above code, using the break method print 1 to 10 tables only
-      ii) From above, print each table till 5 multiplications only
-          eg: 1*1=1 to 1*5=5
-      iii) From above, create a function Tables and create a method in it and then try to achieve the same above result
-           by calling that function.
+
+
+
+
 ====================================================================================================================================================================
+Scala Coding Questions :----
+
+1Q : Print "Hello World" Statement ?
+Ans : Refer HelloWorld package in scala_codes_ak
+====================================================================================================================================================================
+2Q :  i) Print 1 to 20 tables using Scala ?
+      ii) On top of above code, using the break method print 1 to 10 tables only ?
+      ii) From above, print each table till 5 multiplications only ?
+Ans : Refer Tables package in scala_codes_ak
+====================================================================================================================================================================
+3Q : What is the package to use both breakable() and break() methods in Scala?
+Ans : import scala.util.control.Breaks._
+                 (or)
+      import scala.util.control.Breaks.breakable()
+      import scala.util.control.Breaks.break()
+====================================================================================================================================================================
+
 
 
 

@@ -124,7 +124,7 @@ Ans : Transformations :
       -> They are lazy, means they do not immediately execute when they called.
       -> Instead, they build up a logical execution plan that only gets executed when an action is called.
       Ex :
-      map, flatMap, filter, union, join, groupByKey, reduceByKey, distinct
+      map, flatMap, filter, union, select, join, groupByKey, reduceByKey, distinct, repartition, sort
 
       Actions :
       -> Actions are operations that trigger the execution of the transformations and return a result to the driver
@@ -163,6 +163,11 @@ Ans : SparkContext : It is used generally in older Spark versions and it is the 
       SparkSession : We use SparkSession starting from Spark 2.0 and offers a more user friendly APIs. It is actually unified entry
                      point for dataFrame, dataset and SQL APIs as well as RDDS.
 ====================================================================================================================================================================
+16Q : What is a DAG?
+Ans : DAG means Directed Acyclic Graph.
+      It allows Spark to break down a large-scale data processing job into smaller, independent tasks that can be executed in parallel,
+      optimize the job execution, achieve fault tolerance, reuse intermediate results, and provide a visual representation of the logical execution plan.
+====================================================================================================================================================================
 
 
 
@@ -199,10 +204,7 @@ Ans : Apache Spark provides a wide range of optimization techniques to improve t
       7) Shuffle Optimization :
           -> Spark provides a range of techniques to optimize shuffles, which are operations that require data to be shuffled across nodes in a cluster.
 	  -> These techniques include pipelining, sorting and combining data.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-15Q : What is a DAG?
-Ans : A DAG in spark is a graph that represents the flow of data and the sequence of operations to be executed. It is a key
-      structure that allows Spark to manage and optimize the execution of jobs in a distributed, fault-tolerant manner.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 25Q : What are the advantages of using Apache Spark?
 Ans :   -> Spark is a general-purpose, in-memory, fault-tolerant, distributed processing engine that allows you to
@@ -259,6 +261,10 @@ Ans : import org.apache.spark.sql.SparkSession
       val spark:SparkSession = SparkSession.builder().master("local[1]")
                                .appName("Creating SparkSession Object").getOrCreate()
 ====================================================================================================================================================================
+9Q : How to set loglevel from Info to Error?
+Ans : import org.apache.log4j._
+      Logger.getLogger("org").setLevel(Level.ERROR)
+====================================================================================================================================================================
 4Q : What is the import statement to use toDF() method in Spark?
 Ans : import spark.implicits._
 ====================================================================================================================================================================
@@ -274,7 +280,7 @@ Ans : Pivot function is used to rotate the data from one DataFrame/Dataset colum
 7Q : What is rownumber, rank and denserank? Give their syntax and write a code for finding them?
 Ans : rownumber, rank and denserank are the window functions used to assign a value to each row within a window partition.
       rownumber : It is used to assign a unique number to each row within a window partition starting from 1
-      Syntax : val windowSpec = Window.partitionBy("Branch").orderBy(desc("Mark"))
+      Syntax : val windowSpec = Window.partitionBy("Branch").orderBy(desc("Marks"))
                val rowNumberDF = df.withColumn("RowNumber",row_number().over(windowSpec))
 
       rank : It assigns a rank to each row within a window partition starting from 1 but if there are any ties, rank assign
@@ -310,6 +316,7 @@ Ans : Syntax :
          avgDF.show()
       Ex : Refer MinMaxSumAvg_DepartmentWise package in spark_codes_ak
 ====================================================================================================================================================================
+
 
 
 

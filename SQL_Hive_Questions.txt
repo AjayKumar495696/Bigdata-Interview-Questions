@@ -1,19 +1,62 @@
 SQL and Hive Interview Questions :
 *******************************
-1Q : What is the difference between Internal tables and External tables?
+1Q : What is the difference between Internal tables and External tables? Write a Hive query for creating a hive internal and external tables?
 Ans : Internal tables :
       1. We do not mention the location while we are creating an internal table.
       2. Internal table is fully managed by Hive which means hive manages the meta data, schema and actual data of the table.
       3. When we drop an internal table the meta data and the actual data of the table will be deleted.
       4. The performance of the internal table is not impacted by the external storage systems.
+      Hive internal table creation :
+      create table Employees (
+      id int, name string, age int, salary int )
+      row format delimited
+      fields terminated by ','
+      stored as 'textfile";
 
       External tables :
       1. We will mention the location while we are creating an external table.
       2. External table is not fully managed by hive which means hive manages the meta data and schema of the table.
       3. When we drop an external table the meta data of the table will be deleted. The actual data will be stored in HDFS or in the external location where we mentioned.
       4. The performance of the external table is impacted by the external storage systems.
+      Hive external table creation :
+      create table Employees_Ext (
+      id int, name string, age int, salary int )
+      row format delimited
+      fields terminated by ','
+      stored as 'textfile'
+      location 'user/Hadoop/data/Employees_Ext'
 ====================================================================================================================================================================
-2Q : What is the difference among truncate, delete and drop commands? Write a syntax and give me an example code for truncate, delete and drop commands?
+2Q : What is the difference between Partitioning and Bucketing in hive? Give example for both?
+Ans : Partitioning and Bucketing are two optimization techniques in hive to improve the query performance by reducing the amount of data scanned.
+      Partitioning :
+      Partitioning divides a table into parts based on the values of a partition column.
+      Each partition stored as a separate directory in HDFS.
+      Syntax :
+      create table table_name (
+      column_name data_type,
+      column_name data_type )
+      partitioned by (column_name data_type);
+      Ex :
+      create table Students (
+      name string,
+      marks int )
+      partitioned by (branch string);
+
+      Bucketing :
+      Bucketing divides data within a table into a fixed number of files based on the hash of a bucketing column.
+      Each bucket is stored as a file with in the table's directory or the partition's directory.
+      Syntax :
+      create table table_name (
+      column_name data_type,
+      column_name data_type )
+      clustered by (column_name) into n buckets;
+      Ex :
+      create table Sales (
+      Product int,
+      amount int )
+      clustered by (Product) into 4 buckets;
+====================================================================================================================================================================
+3Q : What is the difference among truncate, delete and drop commands? Write a syntax and give me an example code for truncate, delete and drop commands?
 Ans : Truncate :
       It will delete all the rows from the table.
       Syntax : truncate table table_name
@@ -29,7 +72,7 @@ Ans : Truncate :
       Syntax : drop table table_name;
       Ex : drop table Customers;
 ====================================================================================================================================================================
-3Q : What is the difference between update and alter commands in SQL? Write a syntax and give me an example code for both update and alter commands?
+4Q : What is the difference between update and alter commands in SQL? Write a syntax and give me an example code for both update and alter commands?
 Ans : Update :
       It is used to add or update the column values of a table.
       Syntax : update table_name where condition
@@ -42,7 +85,7 @@ Ans : Update :
       Ex : alter table customers
            add Email varchar(255);
 ====================================================================================================================================================================
-4Q : Which command is used to delete a row and a column from a table in SQL? Write a syntax and give me an example code for both?
+5Q : Which command is used to delete a row and a column from a table in SQL? Write a syntax and give me an example code for both?
 Ans : 1) We use delete command to delete a row from the table.
          Syntax : delete from table_name
                   where condition;
@@ -54,75 +97,26 @@ Ans : 1) We use delete command to delete a row from the table.
          Ex : alter table customers
               drop column country;
 ====================================================================================================================================================================
-5Q : When we will use default constraint in SQL?
+6Q : When we will use default constraint in SQL?
 Ans : When any column values are fixed and no need to update every time, then we use default constraint.
 ====================================================================================================================================================================
-
-
-
-
-Yet to Prepare :
-
-1Q : What is the difference between Partitioning and Bucketing in hive? Give example for both?
-Ans : Partitioning and Bucketing are two optimization techniques in hive to improve the query performance by reducing the amount of data scanned.
-      Partitioning :
-      Partitioning divides a table into parts based on the values of a partition column.
-      Each partition stored as a separate directory in HDFS.
-      ex : 
-      create table sales (
-      product string,
-      amount int )
-      partitioned by (region string);
-
-      Bucketing :
-      Bucketing divides data within a table into a fixed number of files based on the hash of a bucketing column.
-      Each bucket is stored as a file with in the table's directory or the partition's directory.
-      ex :
-      create table sales (
-      product string,
-      amount int )
-      clustered by (product) into 4 buckets;
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2Q : Write a Hive query for creating a hive internal and external tables?
-Ans : Hive internal table creation :
-      create table employees (
-      id int, name string, age int, salary int)
-      row format delimited
-      fields terminated by ','
-      stored as 'textfile';
-
-      Hive external table creation :
-      create external table employees_ext (
-      id int, name string, age int, salary int)
-      row format delimited
-      fields terminated by ','
-      stored as 'textfile'
-      location '/user/Hadoop/data/employees_ext'
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-3Q : What are SQL databases and NoSQL databases? Give me some examples?
+7Q : What are SQL databases and NoSQL databases? Give me some examples?
 Ans : Both SQL and NoSQL databases are used to store and manage the data.
       SQL database :
-      These are relational databases used to store the data in tables with rows and columns. These are mainly known for their ACID properties.
+      These are relational databases used to store the data in tables with rows and columns.
+      These are mainly known for their ACID properties.
       Ex : MySQL, PostgreSQL, Oracle Database, Microsoft SQL Server and SQLite.
+
       NoSQL database:
-      These are non-relational databases designed to handle unstructured and semi-structured data. These are more flexible than SQL databases and can scale horizontally.
+      These are non-relational databases designed to handle unstructured and semi-structured data.
+      These are more flexible than SQL databases and can scale horizontally.
       Ex :
       Key-Value stores : Redis, Amazon Dynamo DB
       Document stores : MongoDB, CouchDB
       Column-Family stores : Apache Cassandra, HBase
       Graph databases : Neo4j, Amazon Neptune
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4Q : What are the different optimization techniques of hive?
-
-
-
-
-
-
-
-
-
-
+====================================================================================================================================================================
+8Q : What are the different optimization techniques of hive?
 
 
 
