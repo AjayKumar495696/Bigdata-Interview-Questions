@@ -168,6 +168,17 @@ Ans : DAG means Directed Acyclic Graph.
       It allows Spark to break down a large-scale data processing job into smaller, independent tasks that can be executed in parallel,
       optimize the job execution, achieve fault tolerance, reuse intermediate results, and provide a visual representation of the logical execution plan.
 ====================================================================================================================================================================
+17Q : What is fault tolerance in Apache Spark?
+Ans : Fault tolerance is the Spark framework's ability to seamlessly recover from failures such as worker node crashes, executor loss, or network drops.
+      And it complete the data processing jobs with zero data loss.
+      Older systems like Hadoop MapReduce achieve reliability by writing the data to disk but Spark achieve fault tolerance through in-memory tracking.
+====================================================================================================================================================================
+18Q : What is lazy evaluation in Spark?
+Ans : Lazy evaluation is one of the feature of Spark.
+      It delays the execution of data operations until an action is explicitly called.
+      Which means it holds off on executing transformations until an action is executed.
+      For Ex : if we want to run a transformation like df.filter(), Spark won't filter our dataframe until we run an action called df.show()
+====================================================================================================================================================================
 
 
 
@@ -316,6 +327,14 @@ Ans : Syntax :
          avgDF.show()
       Ex : Refer MinMaxSumAvg_DepartmentWise package in spark_codes_ak
 ====================================================================================================================================================================
+9Q : Write a Spark programme for union of two data frames?
+Ans : Refer Union package in spark_codes_ak
+====================================================================================================================================================================
+10Q : Write a Spark programme for finding Inner, Left, Right, Full, Left Semi and Left Anti joins.
+Ans : Refer Joins package in spark_codes_ak
+====================================================================================================================================================================
+
+
 
 
 

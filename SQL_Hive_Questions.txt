@@ -127,6 +127,192 @@ Ans : Both SQL and NoSQL databases are used to store and manage the data.
 
 
 
+SQL Programmes :
+
+1Q : Write a SQL code for union all and union ?
+
+Ans : 
+
+-- Creating alpha table
+create table alpha (
+  name varchar(255),
+  branch varchar(255),
+marks int);
+
+-- inserting values in it
+insert into alpha (name, branch, marks)
+values
+("Anusha", "ECE", 85),
+("Bindhu", "CSE", 80),
+("Chitra", "EEE", 75),
+("Anusha", "ECE", 85),
+("Divya", "CSE", 75);
+
+
+-- creating beta table
+create table beta (
+  name varchar(255),
+  branch varchar(255),
+marks int);
+
+-- inserting values in it
+insert into beta (name, branch, marks)
+values
+("Eesha", "Civil", 85),
+("Fathima", "Mech", 80),
+("Fathima", "Mech", 80),
+("Ganga", "ECE", 85),
+("Harika", "Chem", 75);
+
+-- union all : It includes duplicate rows also             // union all code
+select * from alpha
+union all
+select * from beta
+
+-- output :
+name	branch	marks
+Anusha	ECE	85
+Bindhu	CSE	80
+Chitra	EEE	75
+Anusha	ECE	85
+Divya	CSE	75
+Eesha	Civil	85
+Fathima	Mech	80
+Fathima	Mech	80
+Ganga	ECE	85
+Harika	Chem	75
+
+-- union : It includes distinct rows only and drops duplicate rows      // union code
+select * from alpha
+union
+select * from beta
+
+-- output :
+name	branch	marks
+Anusha	ECE	85
+Bindhu	CSE	80
+Chitra	EEE	75
+Divya	CSE	75
+Eesha	Civil	85
+Fathima	Mech	80
+Ganga	ECE	85
+Harika	Chem	75
+====================================================================================================================================================================
+2Q : Write a SQL code for Inner, Left, Right, Full, Left Semi and Left Anti joins.
+
+Ans : 
+-- creating employees table
+create table employees (
+  emp_name varchar(255),
+  emp_dept_id int,
+emp_salary int);
+
+-- adding values into it
+insert into employees (emp_name, emp_dept_id, emp_salary)
+values
+("Anusha", 101, 20500),
+("Bindhu", 201, 30500),
+("Anusha", 101, 20500),
+("Chitra", 301, 45200),
+("Divya", 501, 25500);
+
+-- creating department table
+create table department (
+  dept_name varchar(255),
+  dept_id int);
+
+-- adding values into it
+insert into department (dept_name, dept_id)
+values
+("IT", 101),
+("Sales", 201),
+("Marketing", 401),
+("Finance", 601);
+
+
+-- Inner Join :             // inner join code
+select * from employees e
+inner join department d on e.emp_dept_id=d.dept_id;
+
+-- Inner Join output :
+emp_name  emp_dept_id  emp_salary  dept_name  dept_id
+Anusha	   101	        20500	     IT	       101
+Bindhu	   201	        30500	     Sales     201
+Anusha	   101	        20500	     IT	       101
+
+-- Left Join :             // left join code
+select * from employees e
+left join department d on e.emp_dept_id=d.dept_id;
+
+-- Left Join output :
+emp_name  emp_dept_id  emp_salary  dept_name  dept_id
+Anusha	    101	         20500 	      IT	101
+Bindhu	    201	         30500	     Sales	201
+Anusha	    101	         20500	      IT    	101
+Chitra	    301	         45200	      null      null	
+Divya	    501	         25500	      null      null	
+
+-- Right Join :             // right join code
+select * from employees e
+right join department d on e.emp_dept_id=d.dept_id;
+
+-- Right Join output :
+emp_name  emp_dept_id  emp_salary  dept_name  dept_id
+Anusha	   101	        20500	     IT	       101
+Bindhu	   201	        30500	     Sales     201
+Anusha	   101	        20500	     IT	       101
+null       null         null         Marketing 401
+null       null         null         Finance   601
+
+-- Full Join :             // full join code
+select * from employees e
+full join department d on e.emp_dept_id=d.dept_id;
+
+-- Full Join output :
+emp_name  emp_dept_id  emp_salary  dept_name  dept_id
+Anusha	   101	        20500	     IT	       101
+Bindhu	   201	        30500	     Sales     201
+Anusha	   101	        20500	     IT	       101
+Chitra	   301	        45200	     null      null	
+Divya	   501	        25500	     null      null	
+null       null         null         Marketing 401
+null       null         null         Finance   601
+
+-- Left Semi Join :             // left join code
+select * from employees e
+left semi join department d on e.emp_dept_id=d.dept_id;
+
+-- Left Semi Join output :
+emp_name  emp_dept_id  emp_salary
+Anusha	    101	         20500
+Bindhu	    201	         30500
+Anusha	    101	         20500
+
+-- Left Anti Join :             // left join code
+select * from employees e
+left anti join department d on e.emp_dept_id=d.dept_id;
+
+-- Left Anti Join output :
+emp_name  emp_dept_id  emp_salary
+Chitra	    301	         45200	
+Divya	    501	         25500
+====================================================================================================================================================================
+3Q : Write a SQL code for Window Functions (row_number, rank and dense_rank) ?
+Ans : select name, marks,
+      row_number() over (order by (marks) desc) as RowNumber,
+      rank() over (order by (marks) desc) as Rank,
+      dense_rank() over (order by (marks) desc) as DenseRank
+      from Students;
+====================================================================================================================================================================
+
+
+
+
+
+
+
+
+
 
 
 

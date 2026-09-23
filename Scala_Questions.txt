@@ -272,11 +272,12 @@ Ans : import scala.util.control.Breaks._
       import scala.util.control.Breaks.breakable()
       import scala.util.control.Breaks.break()
 ====================================================================================================================================================================
-
-
-
-
-
+4Q : Print a number 9 for 5 times using for loop? Output should be 9,9,9,9,9
+Ans : Refer Nine5Times package in scala_codes_ak
+====================================================================================================================================================================
+5Q : Write a Scala code for first 8 numbers of Fibonacci series?
+Ans : Refer FibonacciSeries package in scala_codes_ak
+====================================================================================================================================================================
 
 
 
