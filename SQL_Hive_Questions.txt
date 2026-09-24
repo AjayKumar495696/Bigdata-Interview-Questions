@@ -298,22 +298,264 @@ Chitra	    301	         45200
 Divya	    501	         25500
 ====================================================================================================================================================================
 3Q : Write a SQL code for Window Functions (row_number, rank and dense_rank) ?
-Ans : select name, marks,
-      row_number() over (order by (marks) desc) as RowNumber,
-      rank() over (order by (marks) desc) as Rank,
-      dense_rank() over (order by (marks) desc) as DenseRank
-      from Students;
+
+Ans :
+-- 1) creating Students table
+create table Students (
+  name varchar(255),
+marks int);
+
+-- adding values into the table
+insert into Students (name, marks)
+values
+("Anusha", 95),
+("Bindhu", 90),
+("Chitra", 90),
+("Divya", 85)
+
+-- RowNumber, Rank and DenseRank code
+select name, marks,
+row_number() over( order by (marks) desc) as RowNumber,
+rank() over( order by (marks) desc) as Rank,
+dense_rank() over( order by (marks) desc) as DenseRank
+from Students;
+
+-- RowNumber, Rank and DenseRank table
+name    marks  RowNumber  Rank	 DenseRank
+Anusha	 95	 1	   1	   1
+Bindhu	 90	 2	   2	   2
+Chitra	 90	 3	   2	   2
+Divya	 85	 4	   4	   3
+
+
+
+-- 2) creating table with Department wise
+create table StudentsWithDepartmentWise (
+  name varchar(255),
+  department varchar(255),
+marks int);
+
+-- adding values into the table
+insert into StudentsWithDepartmentWise (name, department, marks)
+values
+("Anusha", "ECE", 95),
+("Bindhu", "ECE", 90),
+("Chitra", "ECE", 90),
+("Divya", "ECE", 85),
+("Eesha", "CSE", 80),
+("Fathima", "CSE", 80),
+("Ganga", "CSE", 80),
+("Harika", "CSE", 75)
+
+-- RowNumber, Rank and DenseRank code
+select name, department, marks,
+row_number() over (partition by (department) order by marks desc) as RowNumber,
+rank() over (partition by (department) order by marks desc) as Rank,
+dense_rank() over (partition by (department) order by marks desc) as DenseRank
+from StudentsWithDepartmentWise;
+
+-- RowNumber, Rank and DenseRank table with department wise
+name	department  marks  RowNumber  Rank  DenseRank
+Eesha	  CSE	     80	      1	       1	1
+Fathima	  CSE	     80	      2	       1	1
+Ganga	  CSE	     80	      3        1	1
+Harika	  CSE	     75	      4	       4	2
+Anusha	  ECE	     95	      1        1	1
+Bindhu	  ECE	     90	      2        2	2
+Chitra	  ECE	     90	      3	       2	2
+Divya	  ECE	     85       4	       4	3
 ====================================================================================================================================================================
+4Q : Write a code for finding the Second highest and third highest marks ?
+
+Ans :
+-- 1) creating Students table
+create table Students (
+  name varchar(255),
+marks int);
+
+-- adding values into the table
+insert into Students (name, marks)
+values
+("Anusha", 95),
+("Bindhu", 90),
+("Chitra", 90),
+("Divya", 85);
+
+-- second highest marks code
+select name, marks
+from
+(select name, marks,
+dense_rank() over (order by (marks) desc) as DenseRank
+ from Students)
+where DenseRank=2;
+
+-- output :
+name	marks
+Bindhu	 90
+Chitra	 90
+
+-- third highest marks code
+select name, marks
+from
+(select name, marks,
+dense_rank() over (order by (marks) desc) as DenseRank
+ from Students)
+where DenseRank=3;
+
+-- output :
+name	marks
+Divya	 85
 
 
+-- 2) creating table with Department wise
+create table StudentsWithDepartmentWise (
+  name varchar(255),
+  department varchar(255),
+marks int);
+
+-- adding values into the table
+insert into StudentsWithDepartmentWise (name, department, marks)
+values
+("Anusha", "ECE", 95),
+("Bindhu", "ECE", 90),
+("Chitra", "ECE", 90),
+("Divya", "ECE", 85),
+("Eesha", "CSE", 80),
+("Fathima", "CSE", 80),
+("Ganga", "CSE", 80),
+("Harika", "CSE", 75);
+
+-- second highest marks department wise code
+select name, department, marks
+from
+(select name, department, marks,
+dense_rank() over (partition by (department) order by marks desc) as DenseRank
+ from StudentsWithDepartmentWise)
+where DenseRank=2;
+
+-- output :
+name	department  marks
+Harika	  CSE	     75
+Bindhu	  ECE	     90
+Chitra	  ECE	     90
+
+-- third highest marks department wise code
+select name, department, marks
+from
+(select name, department, marks,
+dense_rank() over (partition by (department) order by marks desc) as DenseRank
+ from StudentsWithDepartmentWise)
+where DenseRank=3;
+
+-- output :
+name	department  marks
+Divya	  ECE	     85
+====================================================================================================================================================================
+5Q : Write a SQL code for finding Min, Max, Sum, Avg, Mean salaries of entire table and department wise?
+
+Ans :
+-- creating a table
+create table Students (
+  name varchar(255),
+  branch varchar(255),
+marks int);
+
+-- adding values in it
+insert into Students (name, branch, marks)
+values
+("Anusha", "ECE", 85),
+("Bindhu", "ECE", 80),
+("Chitra", "ECE", 25),
+("Divya", "ECE", 95);
+
+-- Min, Max, Sum, Avg, count Salaries of a table
+select branch,
+min(marks) as MinMarks,
+max(marks) as MaxMarks,
+sum(marks) as SumMarks,
+avg(marks) as AvgMarks,
+count(marks) as TotalCount
+from Students;
+
+-- output :
+branch	MinMarks   MaxMarks   SumMarks   AvgMarks   TotalCount
+ECE	  25	     95	       285	  71.25         4
 
 
+-- creating a table
+create table Students (
+  name varchar(255),
+  branch varchar(255),
+marks int);
 
+-- adding values in it
+insert into Students (name, branch, marks)
+values
+("Anusha", "ECE", 85),
+("Bindhu", "ECE", 80),
+("Chitra", "ECE", 25),
+("Divya", "ECE", 95),
+("Eesha", "CSE", 99),
+("Fathima", "CSE", 35),
+("Ganga", "CSE", 85),
+("Harika", "CSE", 75)
 
+-- Min, Max, Sum, Avg, count Salaries department wise
+select branch,
+min(marks) as MinMarks,
+max(marks) as MaxMarks,
+sum(marks) as SumMarks,
+avg(marks) as AvgMarks,
+count(marks) as TotalCount
+from Students
+group by branch;
 
+-- output :
+branch	MinMarks   MaxMarks   SumMarks   AvgMarks   totalCount
+CSE	  35	     99	        294	  73.5          4
+ECE	  25	     95  	285	  71.25         4
+====================================================================================================================================================================
+6Q : Write a SQL code for doing group by on two columns?
 
+Ans :
+-- creating a table
+create table Employees (
+  name varchar(255),
+  department varchar(255),
+  area varchar(255),
+salary int);
 
+-- adding values into it
+insert into Employees (name, department, area, salary)
+values
+("Anusha","ECE","Hyd",20500),
+("Bindhu","ECE","Del",35000),
+("Chitra","ECE","Hyd",21500),
+("Divya","ECE","Kol",40500),
+("Eesha","CSE","Hyd",50000),
+("Fathima","CSE","Del",10500),
+("Ganga","CSE","Del",15000),
+("Harika","CSE","Kol",65000);
 
+-- group by on two columns code
+select department, area,
+min(salary) as MinSalary,
+max(salary) as MaxSalary,
+sum(salary) as SumSalary,
+avg(salary) as AvgSalary,
+count(salary) as TotalCount
+from Employees
+group by department, area;
+
+-- output :
+department  area  MinSalary   MaxSalary	SumSalary  AvgSalary  TotalCount
+CSE	    Del	   10500	15000	 25500	     12750	2
+CSE	    Hyd	   50000	50000	 50000       50000	1
+CSE	    Kol	   65000	65000	 65000       65000	1
+ECE	    Del	   35000	35000	 35000       35000	1
+ECE	    Hyd	   20500	21500	 42000       21000	2
+ECE	    Kol    40500	40500	 40500       40500	1
+====================================================================================================================================================================
 
 
 
