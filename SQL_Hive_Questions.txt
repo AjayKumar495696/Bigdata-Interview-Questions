@@ -451,7 +451,7 @@ where DenseRank=3;
 name	department  marks
 Divya	  ECE	     85
 ====================================================================================================================================================================
-5Q : Write a SQL code for finding Min, Max, Sum, Avg, Mean salaries of entire table and department wise?
+5Q : Write a SQL code for finding Min, Max, Sum, Avg salaries and count of the entire table and by department wise?
 
 Ans :
 -- creating a table

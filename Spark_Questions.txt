@@ -279,6 +279,9 @@ Ans : import org.apache.log4j._
 4Q : What is the import statement to use toDF() method in Spark?
 Ans : import spark.implicits._
 ====================================================================================================================================================================
+11Q : When we should use "import spark.implicits._" statement?
+Ans : When we want to use toDF() method to create a data frame using RDD then we use "import spark.implicits._"
+====================================================================================================================================================================
 5Q : Write a syntax for creating a data frame in Spark? And write a code for it?
 Ans : Syntax : val df = spark.createDataFrame(data).toDF(cols:_*)
       Ex : Refer CreateDataFrame package in spark_codes_ak
@@ -332,6 +335,9 @@ Ans : Refer Union package in spark_codes_ak
 ====================================================================================================================================================================
 10Q : Write a Spark programme for finding Inner, Left, Right, Full, Left Semi and Left Anti joins.
 Ans : Refer Joins package in spark_codes_ak
+====================================================================================================================================================================
+11Q : Is Count() is an action or aggregate function?
+Ans : It acts as both an action and an aggregate function.
 ====================================================================================================================================================================
 
 
