@@ -339,6 +339,23 @@ Ans : Refer Joins package in spark_codes_ak
 11Q : Is Count() is an action or aggregate function?
 Ans : It acts as both an action and an aggregate function.
 ====================================================================================================================================================================
+12Q : Can i create a single column data frame using createDataFrame? If not why?
+Ans : No, we can't achieve this with createDataFrame() method.
+      In Spark Scala, the createDataFrame method fails for a single column when you pass a collection of primitive types (like Seq[String] or Seq[Int])
+      because the method expects data structured as a product type (a Scala Product like a Tuple or a Case Class) or explicit Spark Row objects.
+      val data = Seq(1, 2, 3)
+      val df = spark.createDataFrame(data).toDF()
+      df.show(false)
+      
+      // It wont get compiled. It will throw an error
+
+      we can create a data frame like below,
+      val df = data.toDF()
+      df.show(false)
+====================================================================================================================================================================
+
+
+1) createtempView & createOrReplaceTempView
 
 
 
