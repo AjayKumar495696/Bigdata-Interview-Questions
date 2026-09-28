@@ -1,0 +1,23 @@
+Scala Coding Questions :
+************************
+
+1Q : Print "Hello World" Statement ?
+Ans : Refer HelloWorld package in scala_codes_ak
+====================================================================================================================================================================
+2Q :  i) Print 1 to 20 tables using Scala ?
+      ii) On top of above code, using the break method print 1 to 10 tables only ?
+      ii) From above, print each table till 5 multiplications only ?
+Ans : Refer Tables package in scala_codes_ak
+====================================================================================================================================================================
+3Q : What is the package to use both breakable() and break() methods in Scala?
+Ans : import scala.util.control.Breaks._
+                 (or)
+      import scala.util.control.Breaks.breakable()
+      import scala.util.control.Breaks.break()
+====================================================================================================================================================================
+4Q : Print a number 9 for 5 times using for loop? Output should be 9,9,9,9,9
+Ans : Refer Nine5Times package in scala_codes_ak
+====================================================================================================================================================================
+5Q : Write a Scala code for first 8 numbers of Fibonacci series?
+Ans : Refer FibonacciSeries package in scala_codes_ak
+====================================================================================================================================================================

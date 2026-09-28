@@ -1,0 +1,148 @@
+Big Data Interview Questions :
+
+1) Create spark session object (from import statement)?
+2) Read csv file, hive table.
+3) Example to read csv file without header(Use StructType).
+4) Write df into parquet, csv formats and in Hive table.
+6) Get number of partitions of a dataframe.
+7) Examples to write joins : inner, left, outer join.
+8) Groupby and max, min functions using Pyspark.
+10) Change datatypes of columns using pyspark.
+11) Read simple json, nested json and create dataframe.
+12) Remove invalid/error records.
+13) Find records present in Dataset A but not in Dataset B.
+15) What is a Sparse Vector?
+16) What are the functions of Spark SQL?
+17) How can you connect Hive to Spark SQL?
+18) What is the role of Catalyst Optimizer in Spark SQL?
+19) What are broadcast variables?
+20) What is lazy evaluation?
+========================================================================================================================================================================
+Big Data All Interview Questions & Answers :
+**************************************
+
+1. Spark Architecture & Core Concepts
+
+Q1: What is the difference between RDD, DataFrame, and Dataset?
+
+RDD (Resilient Distributed Dataset):
+Low-level object-oriented abstraction.
+It lacks a schema definition, offers no built-in optimization, and suffers from serialization overhead.
+
+DataFrame: Distributed collection of data organized into named columns (like a SQL table).
+It is heavily optimized via the Catalyst Optimizer but lacks compile-time type safety.
+
+Dataset: An extension of DataFrames providing compile-time type safety (strongly typed) alongside Catalyst optimizations.
+Note: Datasets are fully supported in Scala, but not in Python (which uses regular DataFrames).
+========================================================================================================================================================================
+Q2: Explain Lazy Evaluation and its benefits.
+
+Spark does not execute operations immediately.
+When you apply a Transformation (e.g., map, filter), Spark simply appends it to a Logical Execution Plan or DAG (Directed Acyclic Graph).
+Execution only triggers when an Action (e.g., count(), collect(), write()) is called.
+
+Benefits: It allows Spark to look at the entire lineage graph, optimize operations together (e.g., combining multiple filters), and skip loading unnecessary data.
+========================================================================================================================================================================
+Q3: What is the difference between Narrow and Wide Transformations?
+
+Narrow Transformation :
+Definition : Each partition of the parent RDD is used by at most one partition of the child RDD.
+Data Movement : No network data transfer (in-memory execution).
+Examples : map(), flatMap(), filter().
+
+Wide Transformation (Shuffle) :
+Definition : Multiple child partitions depend on data from multiple parent partitions.
+Data Movement : Requires Shuffling data across cluster nodes.
+Examples : groupByKey(), reduceByKey(), join().
+========================================================================================================================================================================
+2. Spark Performance Tuning & Optimization
+
+Q4: How do you handle Data Skewness in Spark?
+
+Data Skew occurs when a few keys hold the majority of the data, making some tasks/executors work much longer than others.
+You can handle it by : 
+
+Salting : Appending a random prefix/suffix to the heavily skewed join keys to break them down across more partitions.
+
+Broadcast Joins : If joining a large skewed table with a small table, broadcast the small table to eliminate shuffles entirely.
+
+Adaptive Query Execution (AQE) : Enabling AQE (spark.sql.adaptive.enabled=true) allows Spark 3+ to dynamically detect and split skewed partitions at runtime.
+========================================================================================================================================================================
+Q5: What is the difference between repartition() and coalesce()?
+
+repartition(): Increases or decreases the number of partitions.
+It always forces a full shuffle across the network, creating uniform-sized partitions.
+
+coalesce(): Decreases the number of partitions without a full shuffle by merging adjacent partitions on the same executor.
+It is much faster but can result in uneven partition sizes.
+========================================================================================================================================================================
+Q6: Explain the difference between reduceByKey and groupByKey.
+
+Always favor reduceByKey.
+It performs a map-side combine (locally merges data on each executor before transferring it over the network),
+which greatly reduces shuffle traffic.
+groupByKey transfers all key-value pairs across the network before grouping, easily causing Out-of-Memory (OOM) errors.
+========================================================================================================================================================================
+3. Scala for Data Engineering
+
+Q7: Why is Scala highly preferred for writing Apache Spark applications?
+
+Native Language: Apache Spark is written natively in Scala.
+
+Performance: It compiles down to JVM bytecode, making execution fast without translation overhead.
+
+Type Safety: Companion objects and Datasets give compile-time error detection.
+
+Functional Syntax: Syntaxes match beautifully with data transformations (e.g., pattern matching, immutability).
+========================================================================================================================================================================
+Q8: What is the difference between val, var, and lazy val in Scala?
+
+val: Defines an immutable (read-only) variable.
+Value is evaluated immediately upon definition.
+
+var: Defines a mutable variable that can be reassigned.
+
+lazy val: An immutable variable whose value is not evaluated until it is accessed for the first time.
+Useful for heavy initializations.
+========================================================================================================================================================================
+Q9: How do you handle null or missing values in Scala data pipelines?
+
+Instead of using unsafe null pointers, Scala uses the Option monad, which has two subclasses : Some(value) and None.
+
+val customerAge: Option[Int] = Some(28)
+val missingAge: Option[Int] = None
+
+// Clean way to resolve in data processing
+val finalAge = missingAge.getOrElse(0) 
+
+In Spark DataFrames, you typically drop or fill nulls using df.na.drop() or df.na.fill(0)
+========================================================================================================================================================================
+4. Scenario-Based Coding Questions
+
+Q10: How do you implement a Word Count in Spark using Scala?
+
+val textFile = spark.sparkContext.textFile("hdfs://path/to/file.txt")
+val counts = textFile
+  .flatMap(line => line.split(" "))   // Split rows into individual words
+  .map(word => (word, 1))             // Map each word to a tuple of (word, 1)
+  .reduceByKey(_ + _)                 // Aggregation with map-side combine
+  
+counts.saveAsTextFile("hdfs://path/to/output")
+========================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
