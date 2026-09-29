@@ -130,7 +130,7 @@ Ans : Transformations :
       -> Actions are operations that trigger the execution of the transformations and return a result to the driver
       program or write data to an external storage system.
       Ex :
-      collect, count, reduce, first, take
+      collect, count, first, take, reduce
 ====================================================================================================================================================================
 12Q : Difference between Narrow and Wide transformations?
 Ans : Narrow transformations :
@@ -149,13 +149,21 @@ Ans : Narrow transformations :
 Ans : Shuffling in spark is a process that involves redistributing the data across different partitions and nodes in a cluster.
       It occurs when the data needs to be reorganized to group related records together, during operations like groupBy, reduceByKey, join or distinct.
 ====================================================================================================================================================================
-14Q : Difference between CSV, Parquet and ORC file formats?
+14Q : Difference between CSV, Parquet and ORC file formats? And write a syntax to read a csv, parquet and orc files to spark data frame?
 Ans : CSV : CSV is a plain text format where each line represents a record and each field within a record is separated by a
             delimiter comma. It does not have schema or metadata. The schema needs to be defined by the application.
+      Syntax :
+      val csvDF = spark.read.option("header","true").option("InferSchema","true").csv("C\\Files\\file1.csv")
+
       Parquet : It is a columnar storage file format designed for efficient data processing. These are self describing and they 
                 store schema along with the data.
+      Syntax :
+      val parquetDF = spark.read.parquet("C\\Files\\file2.parquet")
+
       ORC : It is another columnar storage format similar to parquet designed for efficient storage and processing of large datasets.
             ORC files also stores the schema with the data.
+      Syntax :
+      val orcDF = spark.read.orc("C\\Files\\file3.orc")
 ====================================================================================================================================================================
 15Q : Difference between sparkContext and SparkSession?
 Ans : SparkContext : It is used generally in older Spark versions and it is the entry point for RDD-based APIs.
@@ -253,6 +261,8 @@ Ans : 1) Application Submission :
          Executors process the tasks and return results to the driver.
          The driver then assembles the final output of the job.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

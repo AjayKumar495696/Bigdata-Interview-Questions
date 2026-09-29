@@ -16,25 +16,41 @@ Ans :  -> Scala stands for Scalable language.
        -> It is highly influenced by Java.
 ====================================================================================================================================================================
 2Q : What is the difference between singleton and companion objects in Scala? Write a code for both?
-Ans : Singleton Object :
-      1) Any object declared using object keyword can be a singleton object.
-      2) Does not require a corresponding class.
-      3) Used for utility methods, constants, application entry point, etc.
-      4) Example : object Calculator
-      5) Can exist independently.	
+Ans : Every companion object is a singleton object but every singleton object is not a companion object.
+      Both singleton object and companion objects are defined using object keyword.
+
+      Singleton Object :
+      1) Any object which is declared using object keyword is called as a singleton object.
+      2) Its relationship to a class is independent
+      3) Which means it does not share a name with a class in the same file
+      4) Used for global utility functions, application entry point like main, and configurations.
+      5) Does not require a corresponding class.
+      6) Example : object Calculator
 
       Companion Object :
-      1) A singleton object having the same name as a class is called its companion object.
-      2) Must have a corresponding class.
-      3) Commonly used for apply(), factory methods, and class-related functionality.	
-      4) Example : class Employee & object Employee	
-      5) Associated with a specific class.
+      1) A singleton object which is having the same name as its class name is called as companion object.
+      2) Its relationship to a class is paired
+      3) Which means it shares the exact same name and resides in the same source file as a class.
+      4) Commonly used for factory methods like apply(), and class-related functionality.
+      5) Must have a corresponding class.
+      6) Example : class Employee & object Employee	
 Refer OOP_Concepts.SingletonAndCompanionObject package in scala_codes_ak
 ====================================================================================================================================================================
-3Q : Difference between class, object and method?
-Ans : Class is a blueprint for creating objects. It defines the structure and behaviour of objects.
-      Object represent single instances of a class.
+3Q : Difference between class, object and method?  Write a Scala code to identify these?
+Ans : Class :
+      Class is a structural blueprint for creating objects.
+      It defines the structure and behaviour of objects.
+      Class is defined using class keyword.
+
+      Object :
+      Object is a singleton instance which are created from those blueprints.
+      Object is defined using object keyword.
+
+      Method :
       Method define the actions that can be performed within classes or objects.
+      Method is defined using def keyword.
+ 
+      Refer ClassObjectMethod package in scala_codes_ak for complete programme.
 ====================================================================================================================================================================
 4Q : Difference between Val and Var keywords in Scala? Write a syntax and give me an example code for both?
 Ans : Val and Var are used to define variables.

@@ -129,6 +129,22 @@ val counts = textFile
   
 counts.saveAsTextFile("hdfs://path/to/output")
 ========================================================================================================================================================================
+5Q. Difference between nullable=true and nullable=false?
+Ans : 
+nullable property (true or false) decides whether a specific column is allowed to contain missing, undefined or null values.
+
+nullable=true :
+It accepts null, None or missing data
+If a null is encountered the system accept and store the null value without throwing an error.
+
+nullable=false :
+It will not accept Nulls.
+It expects every single row to contain a valid value.
+If a null is encountered, it throws an RuntimeException during the first actions like .count() or .show()
+========================================================================================================================================================================
+
+
+
 
 
 
