@@ -142,6 +142,71 @@ It will not accept Nulls.
 It expects every single row to contain a valid value.
 If a null is encountered, it throws an RuntimeException during the first actions like .count() or .show()
 ========================================================================================================================================================================
+Q : What is the single line comment and multi line comment in XML code?
+Ans :
+Single line comment :
+<!-- This is the single line comment -->
+
+Multiline Comment :
+<!--
+This is
+the multiline
+comment
+-->
+========================================================================================================================================================================
+Q : You told you were using spark 2.3.1 version. So which scala version is compatible with 2.3.1 of spark?
+Ans : Scala 2.11 version is compatible with spark 2.3.1 version
+      2.11.x (For ex : 2.11.8 or 2.11.12)
+========================================================================================================================================================================
+Q : What are the build tools that you configured for your Spark project?
+Ans : Maven and SBT
+========================================================================================================================================================================
+Q : What is the maven dependency xml code for spark core for spark 2.3.1 version?
+Ans :
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-core_2.11</artifactId>
+    <version>2.3.1</version>
+</dependency>
+========================================================================================================================================================================
+Q : What is the maven dependency xml code for spark sql for spark 2.3.1 version?
+Ans :
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-sql_2.11</artifactId>
+    <version>2.3.1</version>
+</dependency>
+========================================================================================================================================================================
+Q : What is the maven dependency for xml code for using avro type files in spark data frames for spark 2.3.1 version?
+Ans :
+
+<dependency>
+    <groupId>com.databricks</groupId>
+    <artifactId>spark-avro_2.11</artifactId>
+    <version>4.0.0</version>
+</dependency>
+========================================================================================================================================================================
+Q : What is the maven dependency for xml code for using orc type files in spark data frames for spark 2.3.1 version?
+Ans :
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-hive_2.11</artifactId>
+    <version>2.3.1</version>
+</dependency>
+========================================================================================================================================================================
+Q : What is the maven dependency for xml code for using xml type files in spark data frames for spark 2.3.1 version?
+Ans :
+
+<dependency>
+    <groupId>com.databricks</groupId>
+    <artifactId>spark-xml_2.11</artifactId>
+    <version>0.6.0</version>
+</dependency>
+========================================================================================================================================================================
+
 
 
 

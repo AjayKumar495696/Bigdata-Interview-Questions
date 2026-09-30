@@ -287,6 +287,72 @@ Ans :
 val csvDF = spark.read.option("header","true").option("inferSchema","true").csv("path")
 val csvDF1 = spark.read.format("csv").option("header","true").option("inferSchema","true").load("path")
 ========================================================================================================================================================================
+Q : What are the ways to write a data frame into a parquet file?
+Ans :
+df.write.parquet("path")
+df.write.format("parquet").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read a parquet file into a data frame?
+Ans :
+val parquetDF = spark.read.parquet("path")
+val parquetDF1 = spark.read.format("parquet").load("path")
+========================================================================================================================================================================
+Q : What are the ways to write a data frame into an avro file?
+Ans :
+df.write.format("com.databricks.spark.avro").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read an avro file into a data frame?
+Ans :
+val avroDF = spark.read.format("com.databricks.spark.avro").load("path")
+========================================================================================================================================================================
+Q : What are the ways to write a data frame into an orc file?
+Ans :
+df.write.orc("path")
+df.write.format("orc").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read an orc file into a data frame?
+Ans :
+val orcDF = spark.read.orc("path")
+val orcDF1 = spark.read.format("orc").load("path")
+========================================================================================================================================================================
+Q : What are the ways to write a data frame into a json file?
+Ans :
+df.write.json("path")
+df.write.format("json").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read a json file into a data frame?
+Ans :
+val jsonDF = spark.read.json("path")
+val jsonDF1 = spark.read.format("json").load("path")
+========================================================================================================================================================================
+Q : What are the ways to write a data frame into an xml file?
+Ans :
+df.write.format("com.databricks.spark.xml").option("rootTag","employee").option("rowTag","emp").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read an xml file into a data frame?
+Ans :
+df.read.format("com.databricks.spark.xml").option("rootTag","employee").option("rowTag","emp").load("path")
+========================================================================================================================================================================
+Q : What are the ways to write a data frame into a text file?
+Ans :
+df.write.text("path")
+df.write.format("text").save("path")
+========================================================================================================================================================================
+Q : What are the ways to read a text file into a data frame?
+Ans :
+val textDF = spark.read.text("path")
+val textDF1 = spark.read.format("text").load("path")
+========================================================================================================================================================================
+Q: For which of the following, DataFrameWriter does not have a built-in shortcut method named as below?
+   a) .csv()  b) .parquet()  c) .avro()  d) .orc()
+
+Ans : c) .avro()
+DataFrameWriter class has built-in shortcut methods for popular formats like .csv(), .parquet() and .orc()
+It does not have a built-in shortcut method .avro() for avro formats
+========================================================================================================================================================================
+
+
+
 
 
    
