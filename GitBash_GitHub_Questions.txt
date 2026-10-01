@@ -1,0 +1,31 @@
+GIT Questions :
+***********
+1Q : If your colleague is having spark-scala-codes repo in his GitHub, you want to clone it to your local 
+     and add the same repo in your GitHub account and run the codes, How will you do it?
+
+Ans : Steps :
+1) I will clone the project (his repo) to my local
+   git clone https://github.com/Anusha_Patel/spark-scala-codes.git
+2) Then I will point the project (my local repo) to my GitHub repo 
+   Means I will remove his connection from the local repo and point the local repo to my GitHub repo
+
+   Removing his connection :
+   cd spark-scala-codes
+   rm -rf .git             (or we can go to spark-scala-codes and delete manually)
+   
+   committing all the changes :
+   git init
+   git add -A
+   git commit -a -m "Initial commit cloning from colleague's repo"
+
+   Creating an empty repository naming as "spark-scala-codes" in my github account
+
+   pointing the local repo to my github repo :
+   git remote add origin "my spark-scala-codes repo's httpslink"
+
+   now, pushing the code to the master
+   git push origin master
+==================================================================================================================================================================================
+
+   
+    
