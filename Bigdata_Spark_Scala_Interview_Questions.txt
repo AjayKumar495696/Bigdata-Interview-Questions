@@ -21,6 +21,29 @@ Big Data Interview Questions :
 Big Data All Interview Questions & Answers :
 **************************************
 
+Big Data software's and tools versions :
+
+1) Git Bash :
+command : git --version
+2.35.1
+
+2) Java :
+command : java -version
+   (or)
+command : spark-submit --version
+1.8.0_202
+
+3) Spark :
+command : spark-submit --version
+2.3.1
+
+4) Scala :
+command : spark-submit --version
+2.11.8
+
+5) IntelliJ IDE :
+2022.2.5 (Community Edition)
+========================================================================================================================================================================
 1. Spark Architecture & Core Concepts
 
 Q1: What is the difference between RDD, DataFrame, and Dataset?
@@ -206,6 +229,29 @@ Ans :
     <version>0.6.0</version>
 </dependency>
 ========================================================================================================================================================================
+Q : difference between git, git bash and git lab and git hub?
+Ans :
+1) Git :
+Git is Distributed Version Control System (Software).
+It runs on Local computer.
+It's purpose is to track the history of your code and lets you manage branches locally.
+
+2) Git Bash :
+Git Bash is Terminal Emulator (Command Line Interface).
+It runs on Local computer (Windows only).
+It's purpose is to give Windows users a Linux-like terminal environment to run local Git commands.
+
+3) GitHub : 
+GitHub is Cloud-based hosting platform (Web Service).
+It runs on Remote cloud servers.
+It's purpose is to host Git repositories online with a strong focus on open-source projects and social collaboration.
+
+4) GitLab :
+GitLab is all-in-one DevOps and hosting platform (Web Service).
+It runs on Remote cloud servers or self-hosted.
+It's purpose is to host Git repositories online with built-in pipelines (CI/CD) for advanced automation and enterprise security.
+========================================================================================================================================================================
+
 
 
 
