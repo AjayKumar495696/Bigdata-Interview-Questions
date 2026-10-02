@@ -88,6 +88,6 @@ This repository is maintained as a **Big Data interview preparation resource** t
 
 This repository is continuously updated with new concepts, interview questions, explanations, and practical examples.
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-### Ajay Somarthy
+**Ajay Somarthy**
