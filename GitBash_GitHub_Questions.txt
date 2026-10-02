@@ -1,5 +1,6 @@
 GIT Questions :
-***********
+*************
+
 1Q : If your colleague is having spark-scala-codes repo in his GitHub, you want to clone it to your local 
      and add the same repo in your GitHub account and run the codes, How will you do it?
 
