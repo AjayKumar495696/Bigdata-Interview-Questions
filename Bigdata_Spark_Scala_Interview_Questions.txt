@@ -252,6 +252,14 @@ It runs on Remote cloud servers or self-hosted.
 It's purpose is to host Git repositories online with built-in pipelines (CI/CD) for advanced automation and enterprise security.
 ========================================================================================================================================================================
 
+Errors :
+
+1) Error: Could not find or load main class PracticeCodes_Spark.practiceCode_Spark_1
+   Process finished with exit code 1
+
+To fix this, make sure all your scala files under src/main/scala is marked as Sources Root
+Right click on scala -> then Mark directory as -> Resources Root
+
 
 
 
