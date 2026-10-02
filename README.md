@@ -90,4 +90,4 @@ This repository is continuously updated with new concepts, interview questions, 
 
 👨‍💻 Author
 
-# Ajay Somarthy
+## Ajay Somarthy
