@@ -86,7 +86,7 @@ This repository is maintained as a **Big Data interview preparation resource** t
 
 ## 📌 Note
 
-This repository is continuously updated with new concepts, interview questions, explanations, and practical examples as part of ongoing learning and interview preparation.
+This repository is continuously updated with new concepts, interview questions, explanations, and practical examples.
 
 👨‍💻 Author
 
